@@ -3,7 +3,9 @@ import { NestFactory } from "@nestjs/core";
 import helmet from "helmet";
 import { AppModule } from "./app.module.js";
 import { bootstrapDemoUser } from "./auth/demo-user.store.js";
+import { correlationMiddleware } from "./common/correlation.middleware.js";
 import { HttpExceptionMappingFilter } from "./common/http-exception-mapping.filter.js";
+import { initSentryIfConfigured } from "./common/sentry-client.js";
 import { setupSwagger } from "./common/swagger.setup.js";
 
 /**
@@ -17,11 +19,13 @@ import { setupSwagger } from "./common/swagger.setup.js";
 export function configureApp(app: INestApplication): void {
   app.use(helmet());
   app.enableCors();
+  app.use(correlationMiddleware);
   app.useGlobalFilters(new HttpExceptionMappingFilter());
   setupSwagger(app);
 }
 
 export async function createApp(): Promise<INestApplication> {
+  initSentryIfConfigured();
   await bootstrapDemoUser();
 
   const app = await NestFactory.create(AppModule, {
