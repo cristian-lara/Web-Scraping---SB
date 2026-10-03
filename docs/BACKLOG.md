@@ -37,18 +37,18 @@ Order: F1-1 â†’ F1-2 (parallel ok) â†’ F1-3. Details in F1 file.
 
 ---
 
-## Phase F2 â€” Product vertical (index)
+## Phase F2 — Product vertical (index)
 
-| ID | Story (short) | Change |
-|----|---------------|--------|
-| F2-1 | Filter strategies A/B + rank tie-break | `add-filter-strategies` |
-| F2-2 | JWT + Bcrypt + Helmet/CORS/429 | `add-jwt-auth` |
-| F2-3 | UsageLog SQLite Prisma | `add-usage-persistence` |
-| F2-4 | React UI auth/filter/table (empty, no pagination) | `add-frontend-filters-ui` |
-| F2-5 | Bruno E2E happy + edges | `add-bruno-e2e` |
-| F2-6 | Swagger + thin controllers | `add-swagger-thin-controllers` |
+| ID | Story (short) | Change | Status |
+|----|---------------|--------|--------|
+| F2-1 | Filter strategies A/B + rank tie-break | `add-mvp-product-vertical` | archived 2026-10-03 |
+| F2-2 | JWT + Bcrypt + Helmet/CORS/429 | `add-mvp-product-vertical` | archived 2026-10-03 |
+| F2-3 | UsageLog SQLite Prisma | `add-mvp-product-vertical` | archived 2026-10-03 |
+| F2-4 | React UI auth/filter/table (empty, no pagination) | `add-mvp-product-vertical` | archived 2026-10-03 |
+| F2-5 | Bruno E2E happy + edges | `add-mvp-product-vertical` | archived 2026-10-03 |
+| F2-6 | Swagger + thin controllers | `add-mvp-product-vertical` | archived 2026-10-03 |
 
-Order: F2-1 â†’ F2-2 â†’ F2-3 â†’ F2-4/F2-6 â†’ F2-5. Details in F2 file.
+Shipped as one mono change (PR #4). Order in F2 file.
 
 ---
 

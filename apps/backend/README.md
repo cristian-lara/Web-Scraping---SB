@@ -14,7 +14,7 @@ Listens on `PORT` (default `3000`). Demo login: `DEMO_USER_EMAIL` / `DEMO_USER_P
 
 Swagger UI: `http://localhost:3000/api` (OpenAPI JSON: `/api-json`).
 
-Bruno (manual, no CI): collection under `apps/backend/bruno/` with env `local`. See `apps/backend/bruno/README.md`. CLI: `npx @usebruno/cli run apps/backend/bruno --env local` with this process listening.
+Bruno: collection under `apps/backend/bruno/` with env `local`. See `apps/backend/bruno/README.md`. CLI: `npx @usebruno/cli run apps/backend/bruno --env local` with this process listening (`make test-e2e`). CI runs the same command after `pnpm --filter @repo/backend start`.
 
 ## SQLite (UsageLog)
 

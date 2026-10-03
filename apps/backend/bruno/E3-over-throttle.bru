@@ -27,18 +27,23 @@ script:pre-request {
   const baseUrl = bru.getEnvVar("baseUrl");
   const email = bru.getEnvVar("demoEmail");
   const password = bru.getEnvVar("demoPassword");
+  // Burn the window. Ignore non-2xx (429/5xx) so bru.sendRequest does not abort the burn.
   for (let i = 0; i < n; i += 1) {
-    await bru.sendRequest({
-      method: "POST",
-      url: baseUrl + "/auth/login",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      data: {
-        email: email,
-        password: password,
-      },
-    });
+    try {
+      await bru.sendRequest({
+        method: "POST",
+        url: baseUrl + "/auth/login",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        data: {
+          email: email,
+          password: password,
+        },
+      });
+    } catch (_err) {
+      // continue burning
+    }
   }
 }
 

@@ -8,6 +8,7 @@ import {
 
 process.env.JWT_SECRET ??= DEFAULT_JWT_SECRET;
 process.env.DEMO_USER_EMAIL ??= DEFAULT_DEMO_USER_EMAIL;
+delete process.env.SENTRY_DSN;
 // DEMO_USER_PASSWORD: no source default — set in test beforeAll / .env
 
 const backendRoot = join(dirname(fileURLToPath(import.meta.url)), "../..");

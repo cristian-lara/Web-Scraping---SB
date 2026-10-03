@@ -19,6 +19,12 @@ tests {
     expect(res.getStatus()).to.equal(200);
   });
 
+  test("HP3 response has x-request-id", function () {
+    const requestId = res.getHeader("x-request-id");
+    expect(requestId).to.be.a("string");
+    expect(String(requestId).length).to.be.greaterThan(0);
+  });
+
   test("HP3 Filter B contract: countWords(title) <= FILTER_WORD_THRESHOLD, points DESC, rank ASC ties", function () {
     const FILTER_WORD_THRESHOLD = 5;
     const SYMBOL_ONLY_TOKEN = /^[^a-zA-Z0-9]+$/;

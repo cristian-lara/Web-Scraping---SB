@@ -42,9 +42,9 @@ export class CheerioScraperAdapter implements HnScraperPort {
 
   private mapRow(
     $: cheerio.CheerioAPI,
-    element: cheerio.Element,
+    element: unknown,
   ): Entry | null {
-    const $row = $(element);
+    const $row = $(element as never);
     const rankText = $row.find("span.rank").first().text().trim();
     const rank = Number.parseInt(rankText.replace(/\D/g, ""), 10);
     const title = $row.find("span.titleline a").first().text().trim();

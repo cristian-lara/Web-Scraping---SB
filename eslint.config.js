@@ -1,3 +1,5 @@
+import tseslint from "typescript-eslint";
+
 /** @type {import('eslint').Linter.Config[]} */
 export default [
   {
@@ -6,6 +8,7 @@ export default [
   {
     files: ["**/*.{ts,tsx}"],
     languageOptions: {
+      parser: tseslint.parser,
       ecmaVersion: 2022,
       sourceType: "module",
     },

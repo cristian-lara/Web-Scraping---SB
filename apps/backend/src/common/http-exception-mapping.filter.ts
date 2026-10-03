@@ -7,6 +7,11 @@ import {
 import type { Response } from "express";
 import { DomainException } from "./domain.exception.js";
 import { HTTP_STATUS_INTERNAL_SERVER_ERROR } from "./http.constants.js";
+import { getRequestId } from "./request-context.js";
+import {
+  captureSentryException,
+  type SentryCapture,
+} from "./sentry-client.js";
 
 type JsonBody = Record<string, unknown>;
 
@@ -28,7 +33,12 @@ function asJsonBody(value: string | object): JsonBody {
  */
 @Catch()
 export class HttpExceptionMappingFilter implements ExceptionFilter {
+  constructor(
+    private readonly capture: SentryCapture = captureSentryException,
+  ) {}
+
   catch(exception: unknown, host: ArgumentsHost): void {
+    this.reportToSentry(exception);
     const response = host.switchToHttp().getResponse<Response>();
 
     if (exception instanceof DomainException) {
@@ -54,5 +64,13 @@ export class HttpExceptionMappingFilter implements ExceptionFilter {
       statusCode: HTTP_STATUS_INTERNAL_SERVER_ERROR,
       message: "Internal server error",
     });
+  }
+
+  private reportToSentry(exception: unknown): void {
+    try {
+      this.capture(exception, { requestId: getRequestId() });
+    } catch {
+      // Capture must not replace typed HTTP mapping.
+    }
   }
 }
