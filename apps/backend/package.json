@@ -4,12 +4,17 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "echo \"backend placeholder — Nest arrives in backlog changes\"",
-    "test": "echo \"no backend tests in foundation\"",
-    "lint": "echo \"backend lint placeholder\"",
+    "build": "tsc -p tsconfig.json",
+    "test": "vitest run",
+    "lint": "eslint src --ext .ts",
     "dev": "echo \"backend scaffold placeholder\""
   },
   "dependencies": {
-    "@repo/shared-types": "workspace:*"
+    "@repo/shared-types": "workspace:*",
+    "cheerio": "^1.1.2"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.2",
+    "vitest": "^3.2.4"
   }
 }
