@@ -22,7 +22,8 @@ CLI:
 
 ```bash
 # From repo root (cwd must be collection root with bruno.json):
-pnpm test:e2e
+pnpm test:e2e          # full collection including E3 throttle
+pnpm test:e2e:ci       # CI subset: HP1–3 + E1–E2 (skip E3; 429 is Vitest)
 # Or: make test-e2e
 ```
 

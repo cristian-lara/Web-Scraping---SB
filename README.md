@@ -106,7 +106,7 @@ make lint
 
 GitHub Actions: `.github/workflows/ci.yml` on `pull_request` and `push` to `develop` and `main`.
 
-Order: `pnpm install --frozen-lockfile` → `pnpm test` → `pnpm lint` → live backend (`pnpm --filter @repo/backend start`) → `pnpm test:e2e` (Bruno from `apps/backend/bruno`).
+Order: `pnpm install --frozen-lockfile` → `pnpm test` → `pnpm lint` → live backend (`pnpm --filter @repo/backend start`) → `pnpm test:e2e:ci` (Bruno HP1–3 + E1–E2; live scrape). E3 throttle is local/`pnpm test:e2e`; EC-429 also covered by Vitest.
 
 **A failing Vitest or Bruno run fails CI** (non-zero exit fails the job). Lint non-zero also fails the job. `SENTRY_DSN` is empty in CI (Sentry not required). `JWT_SECRET` and `DEMO_USER_PASSWORD` are step `env` values and must not be echoed in workflow logs.
 
