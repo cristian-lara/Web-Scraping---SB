@@ -1,0 +1,26 @@
+meta {
+  name: E2 GET invalid filter
+  type: http
+  seq: 5
+}
+
+get {
+  url: {{baseUrl}}/filters?filter=NOT_A_VALID_FILTER
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{accessToken}}
+}
+
+tests {
+  test("E2 invalid filter returns 400 from Zod", function () {
+    expect(res.getStatus()).to.equal(400);
+  });
+}
+
+docs {
+  Edge Case 2 (EC-BR2): filter query violates FilterQuerySchema enum. Requires HP1 JWT.
+  Expect 400 Bad Request, not a successful Entry list.
+}

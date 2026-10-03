@@ -1,0 +1,21 @@
+meta {
+  name: E1 GET filters without auth
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{baseUrl}}/filters?filter=MORE_THAN_5_WORDS_COMMENTS
+  body: none
+  auth: none
+}
+
+tests {
+  test("E1 protected route without Bearer returns 401", function () {
+    expect(res.getStatus()).to.equal(401);
+  });
+}
+
+docs {
+  Edge Case 1 (EC-BR1): GET /filters with no Authorization header expects 401 Unauthorized.
+}

@@ -1,0 +1,64 @@
+meta {
+  name: E3 POST login over throttle
+  type: http
+  seq: 6
+}
+
+post {
+  url: {{baseUrl}}/auth/login
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "email": "{{demoEmail}}",
+    "password": "{{demoPassword}}"
+  }
+}
+
+script:pre-request {
+  const limit = Number(bru.getEnvVar("throttleLimit"));
+  const n = Number.isFinite(limit) && limit > 0 ? limit : 100;
+  const baseUrl = bru.getEnvVar("baseUrl");
+  const email = bru.getEnvVar("demoEmail");
+  const password = bru.getEnvVar("demoPassword");
+  for (let i = 0; i < n; i += 1) {
+    await bru.sendRequest({
+      method: "POST",
+      url: baseUrl + "/auth/login",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      data: {
+        email: email,
+        password: password,
+      },
+    });
+  }
+}
+
+tests {
+  test("E3 over throttle returns 429", function () {
+    expect(res.getStatus()).to.equal(429);
+  });
+}
+
+docs {
+  Edge Case 3 (EC-BR3): exceed AppThrottlerGuard (global APP_GUARD).
+
+  How to reproduce:
+  1. Nest reads THROTTLE_TTL_MS (default 60000) and THROTTLE_LIMIT (default 100)
+     from apps/backend/.env — see .env.example and apps/backend/src/app.module.ts
+     throttleTtlMs / throttleLimit (defaults in env.constants.ts).
+  2. Set Bruno env `throttleLimit` to the same integer as Nest THROTTLE_LIMIT.
+  3. This request POSTs /auth/login `throttleLimit` times in pre-request, then once more.
+     The extra hit must be 429 Too Many Requests.
+  4. Faster local run: THROTTLE_LIMIT=5 and throttleLimit=5, restart Nest, run E3 only
+     (or last in the collection). Hits login, not /filters, so it does not scrape HN.
+  5. After E3, wait THROTTLE_TTL_MS before HP/E2 or they may also 429.
+}
