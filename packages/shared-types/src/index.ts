@@ -1,4 +1,5 @@
-﻿export { hello } from "./hello.js";
+﻿export { SYMBOL_ONLY_TOKEN, countWords } from "./count-words.js";
+export { hello } from "./hello.js";
 export {
   EntrySchema,
   FILTER_LESS_OR_EQUAL_5_WORDS_POINTS,
