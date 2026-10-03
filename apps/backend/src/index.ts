@@ -1,3 +1,2 @@
-# Backend placeholder
-
-Foundation hello-world lives in `@repo/shared-types`.
+/** Package entry re-exports; prefer `pnpm --filter @repo/backend dev` (tsx main). */
+export { createApp } from "./bootstrap.js";
