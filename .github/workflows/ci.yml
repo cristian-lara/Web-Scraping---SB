@@ -54,4 +54,6 @@ jobs:
             echo "backend did not listen on localhost:3000"
             exit 1
           fi
-          npx @usebruno/cli run apps/backend/bruno --env local
+          # Bruno CLI must run with cwd at the collection root (bruno.json).
+          # Prefer workspace binary over npx (npx can lose cwd).
+          pnpm test:e2e

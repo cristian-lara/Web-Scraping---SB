@@ -90,7 +90,7 @@ Backend must already be listening on `http://localhost:3000`.
 
 ```bash
 make test-e2e
-# equivalent: npx @usebruno/cli run apps/backend/bruno --env local
+# equivalent: pnpm test:e2e  (runs bru from apps/backend/bruno)
 ```
 
 Collection: `apps/backend/bruno/` (plain-text `.bru`, env `local`). HP1 login, HP2/HP3 filters (assert non-empty `x-request-id`), E1–E3 (401/400/429). See `apps/backend/bruno/README.md`.
@@ -106,7 +106,7 @@ make lint
 
 GitHub Actions: `.github/workflows/ci.yml` on `pull_request` and `push` to `develop` and `main`.
 
-Order: `pnpm install --frozen-lockfile` → `pnpm test` → `pnpm lint` → live backend (`pnpm --filter @repo/backend start`) → Bruno CLI (`npx @usebruno/cli run apps/backend/bruno --env local`).
+Order: `pnpm install --frozen-lockfile` → `pnpm test` → `pnpm lint` → live backend (`pnpm --filter @repo/backend start`) → `pnpm test:e2e` (Bruno from `apps/backend/bruno`).
 
 **A failing Vitest or Bruno run fails CI** (non-zero exit fails the job). Lint non-zero also fails the job. `SENTRY_DSN` is empty in CI (Sentry not required). `JWT_SECRET` and `DEMO_USER_PASSWORD` are step `env` values and must not be echoed in workflow logs.
 

@@ -21,9 +21,15 @@ GUI: open `apps/backend/bruno/` in Bruno, select environment `local`, run HP1 be
 CLI:
 
 ```bash
-npx @usebruno/cli run apps/backend/bruno --env local
+# From repo root (cwd must be collection root with bruno.json):
+pnpm test:e2e
+# Or: make test-e2e
 ```
+
+## Environment `local`
+
+`environments/local.bru` is CLI-compatible (`vars` only — no `meta`/`docs` blocks; Bruno CLI 4.x parser rejects those). Demo credentials match `apps/backend/.env.example`.
 
 ## Throttle (E3)
 
-`AppThrottlerGuard` is the global `APP_GUARD`. Defaults: 100 requests per 60000 ms (`THROTTLE_LIMIT` / `THROTTLE_TTL_MS`). Bruno `throttleLimit` must match Nest. For a short E3: set both to `5`, restart Nest, run E3.
+`AppThrottlerGuard` is the global `APP_GUARD`. Defaults: 100 requests per 60000 ms (`THROTTLE_LIMIT` / `THROTTLE_TTL_MS`). Bruno `throttleLimit` must match Nest. For a short E3: set both to `5`, restart Nest, run E3. Default 100 works but E3 sends ~101 login POSTs in the window.

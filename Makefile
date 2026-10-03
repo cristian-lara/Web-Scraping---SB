@@ -10,7 +10,7 @@ test:
 	pnpm test
 
 test-e2e:
-	npx @usebruno/cli run apps/backend/bruno --env local
+	pnpm test:e2e
 
 lint:
 	pnpm lint
