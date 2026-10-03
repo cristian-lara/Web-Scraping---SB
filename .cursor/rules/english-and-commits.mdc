@@ -1,0 +1,11 @@
+---
+description: English-only source and OpenSpec; Conventional Commits
+alwaysApply: true
+---
+
+# English + commits
+
+- All **code, comments, API/OpenAPI text, commits, README, intake, and OpenSpec artifacts** MUST be English.
+- Chat with the user may be Spanish; repository text must not.
+- Commits MUST use Conventional Commits (`feat:`, `fix:`, `docs:`, `chore:`, `test:`, `refactor:`, …).
+- Prefer named constants over magic numbers/strings; thin Swagger-documented controllers; services throw typed exceptions.
