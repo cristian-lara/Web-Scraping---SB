@@ -1,0 +1,15 @@
+{
+  "name": "@repo/backend",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "echo \"backend placeholder — Nest arrives in backlog changes\"",
+    "test": "echo \"no backend tests in foundation\"",
+    "lint": "echo \"backend lint placeholder\"",
+    "dev": "echo \"backend scaffold placeholder\""
+  },
+  "dependencies": {
+    "@repo/shared-types": "workspace:*"
+  }
+}
