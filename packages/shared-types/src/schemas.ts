@@ -10,8 +10,17 @@ export const FilterAppliedSchema = z.enum([
   FILTER_LESS_OR_EQUAL_5_WORDS_POINTS,
 ]);
 
+/** Word-count cutoff shared by Filter A (> threshold) and Filter B (<= threshold). */
+export const FILTER_WORD_THRESHOLD = 5;
+
 export const FilterQuerySchema = z.object({
   filter: FilterAppliedSchema,
+});
+
+/** Auth login body shared by BFF Zod pipe and (later) UI resolvers. */
+export const LoginBodySchema = z.object({
+  email: z.email(),
+  password: z.string().min(1),
 });
 
 export const EntrySchema = z.object({
@@ -33,4 +42,5 @@ export const UsageLogSchema = z.object({
 export type Entry = z.infer<typeof EntrySchema>;
 export type FilterApplied = z.infer<typeof FilterAppliedSchema>;
 export type FilterQuery = z.infer<typeof FilterQuerySchema>;
+export type LoginBody = z.infer<typeof LoginBodySchema>;
 export type UsageLog = z.infer<typeof UsageLogSchema>;
