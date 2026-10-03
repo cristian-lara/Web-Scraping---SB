@@ -1,0 +1,109 @@
+command: pnpm --filter @repo/backend test
+cwd: E:\desafios\Web-Scraping---SB
+exit: 0
+
+prisma/app.db gitignored: YES (root .gitignore line `*.db` covers apps/backend/prisma/app.db)
+
+--- stdout ---
+Using Node v24.19.0
+$ prisma generate && vitest run
+Prisma schema loaded from prisma\schema.prisma
+
+✔ Generated Prisma Client (v6.19.0) to .\..\..\node_modules\.pnpm\@prisma+client@6.19.0_prism_0ade0c2032e7f19289902b884120cfab\node_modules\@prisma\client in 75ms
+
+Start by importing your Prisma Client (See: https://pris.ly/d/importing-client)
+
+Tip: Want to turn off tips and other hints? https://pris.ly/tip-4-nohints
+
+
+ RUN  v3.2.7 E:/desafios/Web-Scraping---SB/apps/backend
+
+Prisma schema loaded from prisma\schema.prisma
+Datasource "db": SQLite database "app.db" at "file:app.db"
+
+1 migration found in prisma/migrations
+
+
+No pending migrations to apply.
+[Nest] 49804  - 03/10/2026, 11:43:06 a. m.     LOG [NestFactory] Starting Nest application...
+[Nest] 49804  - 03/10/2026, 11:43:06 a. m.     LOG [InstanceLoader] PassportModule dependencies initialized +15ms
+[Nest] 49804  - 03/10/2026, 11:43:06 a. m.     LOG [InstanceLoader] ThrottlerModule dependencies initialized +112ms
+[Nest] 49804  - 03/10/2026, 11:43:06 a. m.     LOG [InstanceLoader] JwtModule dependencies initialized +0ms
+[Nest] 49804  - 03/10/2026, 11:43:06 a. m.     LOG [InstanceLoader] AnalyticsModule dependencies initialized +0ms
+[Nest] 49804  - 03/10/2026, 11:43:06 a. m.     LOG [InstanceLoader] AppModule dependencies initialized +0ms
+[Nest] 49804  - 03/10/2026, 11:43:06 a. m.     LOG [InstanceLoader] ScrapingModule dependencies initialized +0ms
+[Nest] 49804  - 03/10/2026, 11:43:06 a. m.     LOG [InstanceLoader] AuthModule dependencies initialized +2ms
+[Nest] 49804  - 03/10/2026, 11:43:06 a. m.     LOG [InstanceLoader] FilterModule dependencies initialized +0ms
+[Nest] 49804  - 03/10/2026, 11:43:06 a. m.     LOG [RoutesResolver] AuthController {/auth}: +25ms
+[Nest] 49804  - 03/10/2026, 11:43:07 a. m.     LOG [RouterExplorer] Mapped {/auth/login, POST} route +2ms
+[Nest] 49804  - 03/10/2026, 11:43:07 a. m.     LOG [RoutesResolver] FilterController {/filters}: +0ms
+[Nest] 49804  - 03/10/2026, 11:43:07 a. m.     LOG [RouterExplorer] Mapped {/filters, GET} route +1ms
+[Nest] 49804  - 03/10/2026, 11:43:07 a. m.     LOG [NestApplication] Nest application successfully started +5ms
+[Nest] 49804  - 03/10/2026, 11:43:07 a. m.     LOG [NestFactory] Starting Nest application... +195ms
+[Nest] 49804  - 03/10/2026, 11:43:07 a. m.     LOG [InstanceLoader] PassportModule dependencies initialized +3ms
+[Nest] 49804  - 03/10/2026, 11:43:07 a. m.     LOG [InstanceLoader] ThrottlerModule dependencies initialized +1ms
+[Nest] 49804  - 03/10/2026, 11:43:07 a. m.     LOG [InstanceLoader] JwtModule dependencies initialized +0ms
+[Nest] 49804  - 03/10/2026, 11:43:07 a. m.     LOG [InstanceLoader] AnalyticsModule dependencies initialized +0ms
+[Nest] 49804  - 03/10/2026, 11:43:07 a. m.     LOG [InstanceLoader] AppModule dependencies initialized +0ms
+[Nest] 49804  - 03/10/2026, 11:43:07 a. m.     LOG [InstanceLoader] ScrapingModule dependencies initialized +0ms
+[Nest] 49804  - 03/10/2026, 11:43:07 a. m.     LOG [InstanceLoader] AuthModule dependencies initialized +0ms
+[Nest] 49804  - 03/10/2026, 11:43:07 a. m.     LOG [InstanceLoader] FilterModule dependencies initialized +0ms
+[Nest] 49804  - 03/10/2026, 11:43:07 a. m.     LOG [RoutesResolver] AuthController {/auth}: +8ms
+[Nest] 49804  - 03/10/2026, 11:43:07 a. m.     LOG [RouterExplorer] Mapped {/auth/login, POST} route +0ms
+[Nest] 49804  - 03/10/2026, 11:43:07 a. m.     LOG [RoutesResolver] FilterController {/filters}: +1ms
+[Nest] 49804  - 03/10/2026, 11:43:07 a. m.     LOG [RouterExplorer] Mapped {/filters, GET} route +0ms
+[Nest] 49804  - 03/10/2026, 11:43:07 a. m.     LOG [NestApplication] Nest application successfully started +1ms
+ ✓ src/auth/auth.http.test.ts (7 tests) 821ms
+Prisma schema loaded from prisma\schema.prisma
+Datasource "db": SQLite database "app.db" at "file:app.db"
+
+1 migration found in prisma/migrations
+
+
+No pending migrations to apply.
+ ✓ src/filtering/filter.http.test.ts (6 tests) 659ms
+Prisma schema loaded from prisma\schema.prisma
+Datasource "db": SQLite database "app.db" at "file:app.db"
+
+1 migration found in prisma/migrations
+
+
+No pending migrations to apply.
+ ✓ src/scraping/cheerio-scraper.adapter.test.ts (5 tests) 67ms
+Prisma schema loaded from prisma\schema.prisma
+Datasource "db": SQLite database "app.db" at "file:app.db"
+
+1 migration found in prisma/migrations
+
+
+No pending migrations to apply.
+ ✓ src/analytics/prisma-usage.repository.test.ts (2 tests) 26ms
+Prisma schema loaded from prisma\schema.prisma
+Datasource "db": SQLite database "app.db" at "file:app.db"
+
+1 migration found in prisma/migrations
+
+
+No pending migrations to apply.
+ ✓ src/filtering/filter.service.test.ts (2 tests) 5ms
+Prisma schema loaded from prisma\schema.prisma
+Datasource "db": SQLite database "app.db" at "file:app.db"
+
+1 migration found in prisma/migrations
+
+
+No pending migrations to apply.
+ ✓ src/scraping/axios-hn-html.fetcher.test.ts (1 test) 4ms
+Prisma schema loaded from prisma\schema.prisma
+Datasource "db": SQLite database "app.db" at "file:app.db"
+
+1 migration found in prisma/migrations
+
+
+No pending migrations to apply.
+ ✓ src/filtering/apply-filter.test.ts (6 tests) 4ms
+
+ Test Files  7 passed (7)
+      Tests  29 passed (29)
+   Start at  11:43:02
+   Duration  20.97s (transform 258ms, setup 9.92s, collect 7.18s, tests 1.59s, environment 1ms, prepare 905ms)
