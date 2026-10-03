@@ -52,3 +52,10 @@ The MVP React UI MUST NOT provide pagination controls for filter results and MUS
 #### Scenario: EC-UI-NOPAGE no pagination
 - **WHEN** the MVP UI is reviewed for filter results presentation
 - **THEN** there MUST be no pagination controls and no paged API usage for those results
+
+### Requirement: Unknown client route shows a 404 page
+When the user navigates to a client path that is not the login or filter screen, the UI MUST render an explicit 404 page. The page MUST keep the product name visible, MUST state that the route does not exist, and MUST offer a primary action back to the app (filter screen when signed in, login when signed out). The unknown-route path MUST NOT be a blank crash or uncaught white screen.
+
+#### Scenario: EC-UI-404 unknown client route
+- **WHEN** the user opens an unknown client route
+- **THEN** the UI MUST show a 404 page with a clear not-found message and a primary CTA to the filter screen if authenticated, or to login if unauthenticated
