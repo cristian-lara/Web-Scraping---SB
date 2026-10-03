@@ -3,9 +3,17 @@ import {
   EntrySchema,
   FILTER_LESS_OR_EQUAL_5_WORDS_POINTS,
   FILTER_MORE_THAN_5_WORDS_COMMENTS,
+  FILTER_WORD_THRESHOLD,
   FilterQuerySchema,
+  LoginBodySchema,
   UsageLogSchema,
 } from "./schemas.js";
+
+describe("FILTER_WORD_THRESHOLD", () => {
+  it("is 5", () => {
+    expect(FILTER_WORD_THRESHOLD).toBe(5);
+  });
+});
 
 describe("EntrySchema", () => {
   it("accepts a valid entry", () => {
@@ -48,6 +56,23 @@ describe("FilterQuerySchema", () => {
 
   it("rejects OTHER", () => {
     expect(() => FilterQuerySchema.parse({ filter: "OTHER" })).toThrow();
+  });
+});
+
+describe("LoginBodySchema", () => {
+  it("accepts email and password", () => {
+    expect(
+      LoginBodySchema.parse({
+        email: "demo@example.com",
+        password: "secret",
+      }),
+    ).toEqual({ email: "demo@example.com", password: "secret" });
+  });
+
+  it("rejects missing password", () => {
+    expect(() =>
+      LoginBodySchema.parse({ email: "demo@example.com" }),
+    ).toThrow();
   });
 });
 

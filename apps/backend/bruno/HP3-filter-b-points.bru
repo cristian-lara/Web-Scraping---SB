@@ -1,0 +1,56 @@
+meta {
+  name: HP3 GET Filter B points
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{baseUrl}}/filters?filter=LESS_OR_EQUAL_5_WORDS_POINTS
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{accessToken}}
+}
+
+tests {
+  test("HP3 authenticated Filter B accepted", function () {
+    expect(res.getStatus()).to.equal(200);
+  });
+
+  test("HP3 Filter B contract: countWords(title) <= FILTER_WORD_THRESHOLD, points DESC, rank ASC ties", function () {
+    const FILTER_WORD_THRESHOLD = 5;
+    const SYMBOL_ONLY_TOKEN = /^[^a-zA-Z0-9]+$/;
+    function countWords(title) {
+      const trimmed = String(title).trim();
+      if (trimmed.length === 0) {
+        return 0;
+      }
+      return trimmed.split(/\s+/).filter(function (token) {
+        return !SYMBOL_ONLY_TOKEN.test(token);
+      }).length;
+    }
+
+    const items = res.getBody();
+    expect(items).to.be.an("array");
+    for (let i = 0; i < items.length; i += 1) {
+      const item = items[i];
+      expect(item).to.include.keys("rank", "title", "points", "comments");
+      expect(countWords(item.title)).to.be.at.most(FILTER_WORD_THRESHOLD);
+      if (i > 0) {
+        const prev = items[i - 1];
+        if (prev.points === item.points) {
+          expect(prev.rank).to.be.at.most(item.rank);
+        } else {
+          expect(prev.points).to.be.at.least(item.points);
+        }
+      }
+    }
+  });
+}
+
+docs {
+  Happy Path 3 (HP-BR3): Filter B LESS_OR_EQUAL_5_WORDS_POINTS. Requires HP1 JWT.
+  Empty array is valid if live HN has no titles with countWords <= 5.
+}

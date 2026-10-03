@@ -1,3 +1,4 @@
+import { Injectable } from "@nestjs/common";
 import * as cheerio from "cheerio";
 import { EntrySchema, type Entry } from "@repo/shared-types";
 import type { HnScraperPort } from "./hn-scraper.port.js";
@@ -18,6 +19,7 @@ const COMMENTS_PATTERN = /(\d+)\s*comments?/i;
  * prefer pairing by story id / `#score_<id>` (spacers and DOM drift). Fixture
  * tests stay on adjacent-row pairing.
  */
+@Injectable()
 export class CheerioScraperAdapter implements HnScraperPort {
   scrapeFromHtml(html: string): Entry[] {
     const $ = cheerio.load(html);

@@ -1,0 +1,21 @@
+meta {
+  name: local
+}
+
+vars {
+  baseUrl: http://localhost:3000
+  demoEmail: demo@example.com
+  demoPassword: demo-password-change-me
+  accessToken: 
+  throttleLimit: 100
+}
+
+docs {
+  Demo credentials match apps/backend/.env.example (DEMO_USER_EMAIL / DEMO_USER_PASSWORD). Not production secrets.
+
+  Throttle (AppThrottlerGuard as APP_GUARD in apps/backend/src/app.module.ts):
+  - Defaults: THROTTLE_TTL_MS=60000, THROTTLE_LIMIT=100 (env.constants DEFAULT_THROTTLE_*).
+  - Bruno `throttleLimit` MUST match the running Nest `THROTTLE_LIMIT`.
+  - E3 reproduction: set both to a small N (e.g. 5), restart Nest, then run E3 (N pre-requests + 1 assert 429).
+  - Default 100 works but sends 101 POSTs to /auth/login in the 60s window.
+}

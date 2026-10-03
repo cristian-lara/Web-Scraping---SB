@@ -5,6 +5,9 @@ coverage
 .env
 .turbo
 
+# Cursor MCP may hold Stitch API keys — never commit
+.cursor/mcp.json
+
 # Local orchestration packs (gestor / HITL) — not product history
 projects/**/_local/
 
