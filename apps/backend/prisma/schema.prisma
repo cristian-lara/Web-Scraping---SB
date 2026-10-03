@@ -1,0 +1,18 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:app.db"
+}
+
+/// Usage metrics for a successful authenticated filter run (UsageLogSchema).
+model UsageLog {
+  id                String   @id
+  timestamp         DateTime
+  filter_applied    String
+  processed_items   Int
+  execution_time_ms Int
+  userId            String
+}
