@@ -1,0 +1,58 @@
+﻿{
+    "screens":  [
+                    {
+                        "title":  "HN Scraper — Internal BFF Login (Light Mode)",
+                        "folder":  "screens/HN-Scraper-Internal-BFF-Login-Light-Mode-2fd834d6a54d43b5b1e88ae71f453cdf",
+                        "id":  "2fd834d6a54d43b5b1e88ae71f453cdf"
+                    },
+                    {
+                        "title":  "HN Scraper — State: Loading (Frame A)",
+                        "folder":  "screens/HN-Scraper-State-Loading-Frame-A-00864c46ff704fe5b21954216a41a20b",
+                        "id":  "00864c46ff704fe5b21954216a41a20b"
+                    },
+                    {
+                        "title":  "HN Scraper — Filter \u0026 Results Table (Light)",
+                        "folder":  "screens/HN-Scraper-Filter-Results-Table-Light-78991f97db944523a7d20b80d877c24a",
+                        "id":  "78991f97db944523a7d20b80d877c24a"
+                    },
+                    {
+                        "title":  "HN Scraper — Internal BFF Login (Light)",
+                        "folder":  "screens/HN-Scraper-Internal-BFF-Login-Light-3677ca57e74e4acea40b248ca04e0a32",
+                        "id":  "3677ca57e74e4acea40b248ca04e0a32"
+                    },
+                    {
+                        "title":  "HN Scraper — State: Error (Frame C)",
+                        "folder":  "screens/HN-Scraper-State-Error-Frame-C-9432f167b9ad4b3a8b9c8b35f8bf5727",
+                        "id":  "9432f167b9ad4b3a8b9c8b35f8bf5727"
+                    },
+                    {
+                        "title":  "HN Scraper — Internal BFF Login",
+                        "folder":  "screens/HN-Scraper-Internal-BFF-Login-a2253b9fb40a4b32b1071a6c734ed6c9",
+                        "id":  "a2253b9fb40a4b32b1071a6c734ed6c9"
+                    },
+                    {
+                        "title":  "HN Scraper — State: Empty (Frame B)",
+                        "folder":  "screens/HN-Scraper-State-Empty-Frame-B-37171e9168ef404f9ad3a1d42e4a7338",
+                        "id":  "37171e9168ef404f9ad3a1d42e4a7338"
+                    },
+                    {
+                        "title":  "HN Scraper — Filter \u0026 Results Table (Light Mode)",
+                        "folder":  "screens/HN-Scraper-Filter-Results-Table-Light-Mode-e5301b2b284a43fba56a22001dffe1f9",
+                        "id":  "e5301b2b284a43fba56a22001dffe1f9"
+                    },
+                    {
+                        "title":  "HN Scraper — Filter \u0026 Results Table",
+                        "folder":  "screens/HN-Scraper-Filter-Results-Table-fbc4dec3d5164c9a80375451229b6de0",
+                        "id":  "fbc4dec3d5164c9a80375451229b6de0"
+                    },
+                    {
+                        "title":  "HN Scraper — 404 Not Found",
+                        "folder":  "screens/HN-Scraper-404-Not-Found-c16b7116a8bc4a7ab7b06a9f60522d60",
+                        "id":  "c16b7116a8bc4a7ab7b06a9f60522d60"
+                    }
+                ],
+    "title":  "HN Scraper Login Screen",
+    "screenCount":  10,
+    "exportedAt":  "2026-10-02T23:42:50.4606446-05:00",
+    "projectId":  "11100839460552024747"
+}
