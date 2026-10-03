@@ -1,7 +1,7 @@
-# Product backlog — Hacker News Scraper MVP
+﻿# Product backlog â€” Hacker News Scraper MVP
 
 **Vision SSOT:** `cursor-intake-spec-v7.md`  
-**Epics (mapa):** [`docs/backlog/EPICS.md`](backlog/EPICS.md) (E1–E9)  
+**Epics (mapa):** [`docs/backlog/EPICS.md`](backlog/EPICS.md) (E1â€“E9)  
 **Foundation change:** archived `2026-10-02-init-mvp-from-intake`  
 **Detailed stories (subagent drafts from intake):**
 
@@ -11,11 +11,11 @@
 | F2 Product | [`docs/backlog/F2-product-user-stories.md`](backlog/F2-product-user-stories.md) | [Backlog F2](7102c8eb-b22f-45ae-bbab-2888ab685c94) |
 | F3 Ops | [`docs/backlog/F3-ops-user-stories.md`](backlog/F3-ops-user-stories.md) | [Backlog F3](da43828e-e7ab-407f-be35-8df6e4bf4b37) |
 
-Each story → one OpenSpec change: `/opsx-propose <kebab-name>` → audit → apply → archive.
+Each story â†’ one OpenSpec change: `/opsx-propose <kebab-name>` â†’ audit â†’ apply â†’ archive.
 
 ---
 
-## Phase F0 — Foundation (this change)
+## Phase F0 â€” Foundation (this change)
 
 | ID | User story | Change | Status |
 |----|------------|--------|--------|
@@ -25,19 +25,19 @@ Each story → one OpenSpec change: `/opsx-propose <kebab-name>` → audit → a
 
 ---
 
-## Phase F1 — Domain core (index)
+## Phase F1 â€” Domain core (index)
 
 | ID | Story (short) | Change | Status |
 |----|---------------|--------|--------|
-| F1-1 | Shared Zod Entry / FilterQuery / UsageLog | `add-shared-domain-types` | pending |
+| F1-1 | Shared Zod Entry / FilterQuery / UsageLog | `add-shared-domain-types` | archived 2026-10-02 |
 | F1-2 | `countWords` TDD + named threshold | `add-count-words` | pending |
 | F1-3 | Cheerio scraper + fixture top 30 offline | `add-hn-scraper-fixture` | pending |
 
-Order: F1-1 → F1-2 (parallel ok) → F1-3. Details in F1 file.
+Order: F1-1 â†’ F1-2 (parallel ok) â†’ F1-3. Details in F1 file.
 
 ---
 
-## Phase F2 — Product vertical (index)
+## Phase F2 â€” Product vertical (index)
 
 | ID | Story (short) | Change |
 |----|---------------|--------|
@@ -48,11 +48,11 @@ Order: F1-1 → F1-2 (parallel ok) → F1-3. Details in F1 file.
 | F2-5 | Bruno E2E happy + edges | `add-bruno-e2e` |
 | F2-6 | Swagger + thin controllers | `add-swagger-thin-controllers` |
 
-Order: F2-1 → F2-2 → F2-3 → F2-4/F2-6 → F2-5. Details in F2 file.
+Order: F2-1 â†’ F2-2 â†’ F2-3 â†’ F2-4/F2-6 â†’ F2-5. Details in F2 file.
 
 ---
 
-## Phase F3 — Operability & release (index)
+## Phase F3 â€” Operability & release (index)
 
 | ID | Story (short) | Change |
 |----|---------------|--------|
@@ -61,7 +61,7 @@ Order: F2-1 → F2-2 → F2-3 → F2-4/F2-6 → F2-5. Details in F2 file.
 | F3-3 | CI Vitest + Bruno + lint | `add-ci-quality-gates` |
 | F3-4 | README + Makefile + tag `v1.0.0-mvp` | `add-docs-makefile-release` |
 
-Order: F3-1 → F3-2 → F3-3 → F3-4. Details in F3 file.
+Order: F3-1 â†’ F3-2 â†’ F3-3 â†’ F3-4. Details in F3 file.
 
 ---
 
@@ -69,5 +69,6 @@ Order: F3-1 → F3-2 → F3-3 → F3-4. Details in F3 file.
 
 1. Finish/archive foundation (`init-mvp-from-intake`).
 2. Open the next story detail file; pick one change id.
-3. `/opsx-propose <change-name>` using that story’s acceptance criteria.
-4. `/ml-propose-audit-check` → `/opsx-apply` → archive → next story.
+3. `/opsx-propose <change-name>` using that storyâ€™s acceptance criteria.
+4. `/ml-propose-audit-check` â†’ `/opsx-apply` â†’ archive â†’ next story.
+
