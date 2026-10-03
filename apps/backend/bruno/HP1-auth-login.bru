@@ -1,0 +1,48 @@
+meta {
+  name: HP1 POST auth login
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{baseUrl}}/auth/login
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "email": "{{demoEmail}}",
+    "password": "{{demoPassword}}"
+  }
+}
+
+script:post-response {
+  const body = res.getBody();
+  const token = body && body.access_token;
+  if (typeof token === "string" && token.length > 0) {
+    bru.setVar("accessToken", token);
+    bru.setEnvVar("accessToken", token);
+  }
+}
+
+tests {
+  test("HP1 login succeeds", function () {
+    expect(res.getStatus()).to.equal(200);
+  });
+
+  test("HP1 JWT extractable as access_token", function () {
+    const body = res.getBody();
+    expect(body).to.be.an("object");
+    expect(body.access_token).to.be.a("string");
+    expect(body.access_token.length).to.be.greaterThan(0);
+  });
+}
+
+docs {
+  Happy Path 1 (HP-BR1): demo login, extract JWT for Authorization Bearer on later requests.
+}
