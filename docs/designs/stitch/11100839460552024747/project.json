@@ -1,0 +1,286 @@
+﻿{
+    "name":  "projects/11100839460552024747",
+    "title":  "HN Scraper Login Screen",
+    "visibility":  "PRIVATE",
+    "createTime":  "2026-10-03T04:19:54.454216Z",
+    "updateTime":  "2026-10-03T04:28:42.521008Z",
+    "projectType":  "TEXT_TO_UI_PRO",
+    "thumbnailScreenshot":  {
+                                "name":  "projects/11100839460552024747/screens/a2253b9fb40a4b32b1071a6c734ed6c9/fileEntries/screenshot",
+                                "downloadUrl":  "https://lh3.googleusercontent.com/aida/AEtjO1XykrFUiMy7RdVigP1bBIMXUlPtRcvbj-fs8UpT2yE-Uylq5V50CpduiT8TQT0b2GvVwq54nK65iJ6ybA_guOfeb11ETWJNNOKpW8Yt26_nFtAOKDW0Fty5qdeuWcdHqhsOJI1G88i8MzvcNev8NUOhEXqI4kWjgNy-BaREUPdlPKxfGxNExO4vpkoGYg9kR1Zldww3R3h8qWmasJJp4TsHZ1v3MUEKzGNsJ8uaJg5CnhvFp20VCpV-6R8"
+                            },
+    "origin":  "STITCH",
+    "deviceType":  "DESKTOP",
+    "designTheme":  {
+                        "colorMode":  "DARK",
+                        "font":  "SPACE_GROTESK",
+                        "roundness":  "ROUND_FOUR",
+                        "customColor":  "#f97316",
+                        "headlineFont":  "SPACE_GROTESK",
+                        "bodyFont":  "GEIST",
+                        "labelFont":  "JETBRAINS_MONO",
+                        "namedColors":  {
+                                            "on_secondary_fixed":  "#370e00",
+                                            "on_primary_fixed":  "#341100",
+                                            "secondary":  "#ffb599",
+                                            "error":  "#ffb4ab",
+                                            "inverse_primary":  "#9d4300",
+                                            "secondary_container":  "#f66018",
+                                            "on_primary":  "#552100",
+                                            "on_tertiary_container":  "#00374d",
+                                            "on_error":  "#690005",
+                                            "primary":  "#ffb690",
+                                            "inverse_surface":  "#e3e1e9",
+                                            "on_tertiary_fixed_variant":  "#004c69",
+                                            "on_tertiary_fixed":  "#001e2c",
+                                            "secondary_fixed":  "#ffdbce",
+                                            "background":  "#121318",
+                                            "on_tertiary":  "#00354a",
+                                            "on_secondary_container":  "#4f1700",
+                                            "on_error_container":  "#ffdad6",
+                                            "tertiary":  "#7bd0ff",
+                                            "tertiary_container":  "#00a6df",
+                                            "primary_fixed_dim":  "#ffb690",
+                                            "inverse_on_surface":  "#2f3036",
+                                            "surface_bright":  "#38393f",
+                                            "outline_variant":  "#584237",
+                                            "on_surface":  "#e3e1e9",
+                                            "surface_container":  "#1e1f25",
+                                            "on_surface_variant":  "#e0c0b1",
+                                            "surface_container_high":  "#292a2f",
+                                            "surface_tint":  "#ffb690",
+                                            "surface_container_highest":  "#34343a",
+                                            "on_primary_fixed_variant":  "#783200",
+                                            "primary_fixed":  "#ffdbca",
+                                            "on_secondary":  "#5a1c00",
+                                            "outline":  "#a78b7d",
+                                            "surface":  "#121318",
+                                            "surface_dim":  "#121318",
+                                            "secondary_fixed_dim":  "#ffb599",
+                                            "tertiary_fixed":  "#c4e7ff",
+                                            "surface_container_lowest":  "#0d0e13",
+                                            "tertiary_fixed_dim":  "#7bd0ff",
+                                            "on_secondary_fixed_variant":  "#7f2b00",
+                                            "on_background":  "#e3e1e9",
+                                            "surface_container_low":  "#1a1b21",
+                                            "on_primary_container":  "#582200",
+                                            "error_container":  "#93000a",
+                                            "primary_container":  "#f97316",
+                                            "surface_variant":  "#34343a"
+                                        },
+                        "designMd":  "---\nname: Technical Precision Utilitarian\ncolors:\n  surface: \u0027#121318\u0027\n  surface-dim: \u0027#121318\u0027\n  surface-bright: \u0027#38393f\u0027\n  surface-container-lowest: \u0027#0d0e13\u0027\n  surface-container-low: \u0027#1a1b21\u0027\n  surface-container: \u0027#1e1f25\u0027\n  surface-container-high: \u0027#292a2f\u0027\n  surface-container-highest: \u0027#34343a\u0027\n  on-surface: \u0027#e3e1e9\u0027\n  on-surface-variant: \u0027#e0c0b1\u0027\n  inverse-surface: \u0027#e3e1e9\u0027\n  inverse-on-surface: \u0027#2f3036\u0027\n  outline: \u0027#a78b7d\u0027\n  outline-variant: \u0027#584237\u0027\n  surface-tint: \u0027#ffb690\u0027\n  primary: \u0027#ffb690\u0027\n  on-primary: \u0027#552100\u0027\n  primary-container: \u0027#f97316\u0027\n  on-primary-container: \u0027#582200\u0027\n  inverse-primary: \u0027#9d4300\u0027\n  secondary: \u0027#ffb599\u0027\n  on-secondary: \u0027#5a1c00\u0027\n  secondary-container: \u0027#f66018\u0027\n  on-secondary-container: \u0027#4f1700\u0027\n  tertiary: \u0027#7bd0ff\u0027\n  on-tertiary: \u0027#00354a\u0027\n  tertiary-container: \u0027#00a6df\u0027\n  on-tertiary-container: \u0027#00374d\u0027\n  error: \u0027#ffb4ab\u0027\n  on-error: \u0027#690005\u0027\n  error-container: \u0027#93000a\u0027\n  on-error-container: \u0027#ffdad6\u0027\n  primary-fixed: \u0027#ffdbca\u0027\n  primary-fixed-dim: \u0027#ffb690\u0027\n  on-primary-fixed: \u0027#341100\u0027\n  on-primary-fixed-variant: \u0027#783200\u0027\n  secondary-fixed: \u0027#ffdbce\u0027\n  secondary-fixed-dim: \u0027#ffb599\u0027\n  on-secondary-fixed: \u0027#370e00\u0027\n  on-secondary-fixed-variant: \u0027#7f2b00\u0027\n  tertiary-fixed: \u0027#c4e7ff\u0027\n  tertiary-fixed-dim: \u0027#7bd0ff\u0027\n  on-tertiary-fixed: \u0027#001e2c\u0027\n  on-tertiary-fixed-variant: \u0027#004c69\u0027\n  background: \u0027#121318\u0027\n  on-background: \u0027#e3e1e9\u0027\n  surface-variant: \u0027#34343a\u0027\ntypography:\n  headline-xl:\n    fontFamily: Space Grotesk\n    fontSize: 36px\n    fontWeight: \u0027700\u0027\n    lineHeight: 44px\n    letterSpacing: -0.03em\n  headline-xl-mobile:\n    fontFamily: Space Grotesk\n    fontSize: 28px\n    fontWeight: \u0027700\u0027\n    lineHeight: 34px\n    letterSpacing: -0.02em\n  headline-lg:\n    fontFamily: Space Grotesk\n    fontSize: 24px\n    fontWeight: \u0027600\u0027\n    lineHeight: 32px\n    letterSpacing: -0.02em\n  headline-md:\n    fontFamily: Space Grotesk\n    fontSize: 20px\n    fontWeight: \u0027600\u0027\n    lineHeight: 28px\n    letterSpacing: -0.015em\n  headline-sm:\n    fontFamily: Space Grotesk\n    fontSize: 16px\n    fontWeight: \u0027600\u0027\n    lineHeight: 24px\n    letterSpacing: -0.01em\n  body-lg:\n    fontFamily: Geist\n    fontSize: 16px\n    fontWeight: \u0027400\u0027\n    lineHeight: 24px\n    letterSpacing: -0.005em\n  body-md:\n    fontFamily: Geist\n    fontSize: 14px\n    fontWeight: \u0027400\u0027\n    lineHeight: 20px\n    letterSpacing: \u00270\u0027\n  body-sm:\n    fontFamily: Geist\n    fontSize: 12px\n    fontWeight: \u0027400\u0027\n    lineHeight: 16px\n    letterSpacing: \u00270\u0027\n  label-md:\n    fontFamily: Geist\n    fontSize: 13px\n    fontWeight: \u0027500\u0027\n    lineHeight: 18px\n    letterSpacing: 0.01em\n  label-sm:\n    fontFamily: Geist\n    fontSize: 11px\n    fontWeight: \u0027500\u0027\n    lineHeight: 14px\n    letterSpacing: 0.02em\n  code-md:\n    fontFamily: JetBrains Mono\n    fontSize: 13px\n    fontWeight: \u0027500\u0027\n    lineHeight: 20px\n    letterSpacing: -0.01em\n  code-sm:\n    fontFamily: JetBrains Mono\n    fontSize: 11px\n    fontWeight: \u0027500\u0027\n    lineHeight: 16px\n    letterSpacing: \u00270\u0027\nrounded:\n  sm: 0.125rem\n  DEFAULT: 0.25rem\n  md: 0.375rem\n  lg: 0.5rem\n  xl: 0.75rem\n  full: 9999px\nspacing:\n  gutter: 1rem\n  gutter-lg: 1.5rem\n  margin: 1rem\n  margin-md: 1.5rem\n  margin-lg: 2rem\n  space-xs: 0.25rem\n  space-sm: 0.5rem\n  space-md: 0.75rem\n  space-lg: 1rem\n  space-xl: 1.5rem\n---\n\n## Brand \u0026 Style\n\nThe design system establishes a high-utility, disciplined developer environment engineered specifically for data scraping, automated indexing, and pipeline orchestration. The aesthetic takes inspiration from modern technical command centers, refined low-noise developer tools, and the pragmatic functionality of modern component architectures.\n\n### Tone \u0026 Sensibility\n- **Utilitarian \u0026 Unflinching:** Prioritizes density, data legibility, and state clarity over decorative visual noise.\n- **Engineered Precision:** Every border, line-height, and padding increment aligns to an uncompromising technical grid.\n- **Restrained Focus:** High-contrast accents are reserved strictly for mission-critical interactions, execution states, and telemetry alerts.\n\n## Colors\n\nThe palette is anchored by deep slate-graphite foundations engineered to prevent eye strain during sustained data review, contrasted with a disciplined orange accent honoring Hacker News lineage.\n\n### Surface Hierarchy \u0026 Contrast Tokens\n- **Canvas Base:** `#090A0F` (True dark with subtle cool slate undertone).\n- **Surface Layer 1 (Cards, panels, sidebars):** `#0E1117`\n- **Surface Layer 2 (Elevated modules, popovers, dropdowns):** `#161B22`\n- **Surface Layer 3 (Active tables, inputs, inactive badges):** `#21262D`\n- **Subtle Structural Border:** `#30363D`\n- **Strong Structural Border:** `#484F58`\n\n### Technical Accent \u0026 Feedback\n- **Brand Accent \u0026 Primary Execution:** `#F97316` (Default CTA, active indicator), `#EA580C` (Hover/Press), `#FF6600` (High-visibility micro-tags).\n- **Focus Rings:** `rgba(249, 115, 22, 0.45)` with a 1px solid `#F97316` border offset.\n- **Success \u0026 Extraction Running:** `#10B981` (Emerald).\n- **Warning \u0026 Rate Limiting:** `#F59E0B` (Amber).\n- **Destructive \u0026 Parsing Errors:** `#EF4444` (Accessible Crimson).\n- **Informational \u0026 API Payload:** `#38BDF8` (Sky blue).\n\n## Typography\n\nThe typographic hierarchy pairs the geometric, angular authority of **Space Grotesk** for headings with the high legibility of **Geist** for controls and structural layout text, completed by **JetBrains Mono** for payload traces, HTTP status codes, cron expressions, and regex configurations.\n\n### Editorial Guidelines\n- Use `headline-*` sparingly; dashboard panels should lead with concise, uppercase `label-sm` category kickers over large decorative headings.\n- Numerical scrape counts, job durations, latency metrics, and API payloads must render with `code-md` or `code-sm` to maintain vertical tabular alignment.\n\n## Layout \u0026 Spacing\n\nThe layout model is driven by an information-dense, collapsible multi-panel canvas designed for continuous operation across large external monitors, laptop splits, and mobile telemetry checks.\n\n### Grid \u0026 Density Rules\n- **Desktop (\u003e= 1280px):** 12-column dynamic layout, 24px outer margins, 16px horizontal and vertical gutters. Persistent 240px technical navigation sidebar.\n- **Tablet (768px - 1279px):** 8-column layout, 20px outer margins, 12px gutters. Navigation collapses to an icon rail (56px).\n- **Mobile (\u003c 768px):** Single-column stacked stream, 16px margins, 8px gutters. Bottom sticky action bar replaces inline primary operations.\n- **Component Compactness:** Form rows, terminal feeds, and table cell heights conform to a strict 32px or 36px vertical baseline rhythm.\n\n## Elevation \u0026 Depth\n\nThis design system avoids heavy blurred drop shadows and glossy skeuomorphism. Depth is communicated strictly through surface color stepping, crisp 1px structural boundaries, and subtle directional edge highlights.\n\n### Elevation Levels\n- **Level 0 (Base Floor - `#090A0F`):** Main app canvas, terminal run-log backgrounds.\n- **Level 1 (Docked Containers - `#0E1117`):** Card panels, scraping task boards, configuration sidebars. Surrounded by a 1px solid border in `#21262D`.\n- **Level 2 (Active Overlays - `#161B22`):** Dropdowns, context menus, and tooltips. Outlined by `#30363D` with an ultra-subtle ambient shadow: `0 8px 24px -4px rgba(0, 0, 0, 0.6)`.\n- **Level 3 (Modal Modifiers \u0026 Error Dialogs - `#161B22`):** Centered view overlays with a backdrop filter of `blur(4px)` and `rgba(9, 10, 15, 0.8)`. Outer boundary `#484F58`.\n\n## Shapes\n\nIn keeping with a modern developer environment, the shape geometry is sharp, understated, and tactical. \n\n- **Containers \u0026 Panels:** Formed with `rounded-md` (0.375rem / 6px) to maintain a crisp, structured framing.\n- **Buttons, Inputs, and Badges:** Bound with `rounded-sm` (0.25rem / 4px) to emphasize density and micro-precision.\n- **Pill Exceptions:** Restricted entirely to status chips (`rounded-full`) showing daemon states (e.g., `RUNNING`, `IDLE`, `TERMINATED`).\n\n## Components\n\n### Buttons\n- **Primary:** Solid `#F97316` fill, `#090A0F` bold text, 1px border of `#EA580C`. Hover transitions to `#EA580C`. Active state triggers `transform: scale(0.98)`.\n- **Secondary:** Surface `#161B22`, 1px border `#30363D`, text `#E6EDF3`. Hover transitions to `#21262D` and border `#484F58`.\n- **Loading State:** Replace label icon with an inline rotating SVG spinner (14px); disable pointer events while preserving parent button dimensions.\n\n### Inputs \u0026 Select Fields\n- **Idle State:** Background `#0E1117`, border 1px solid `#30363D`, text `#F0F6FC`, font family `Geist` or `JetBrains Mono` for pattern fields. Height fixed at 36px.\n- **Focus State:** Border shifts to `#F97316` with a ring glow: `box-shadow: 0 0 0 1px #F97316`.\n- **Error State:** Border shifts to `#EF4444`. Accompanied by a 12px error message beneath the input utilizing `#EF4444` and an alert icon prefix.\n\n### Checkboxes \u0026 Switches\n- **Checkbox:** 16x16px square, `#161B22` background, 1px border `#30363D`. Checked: `#F97316` fill with an internal white check mark.\n- **Switch:** 36x20px rail in `#21262D`. When active, track turns `#F97316` with a 16px thumb sliding horizontally with a 150ms ease-out curve.\n\n### Data Chips \u0026 Status Badges\n- **Monochrome Utility Badges:** `#161B22` background, 1px border `#30363D`, monospace font size 11px, tracking standard.\n- **State Badges:** Compact badge with a 6px status dot:\n  - Green (`#10B981`) for `200 OK` responses and active workers.\n  - Orange (`#F97316`) for crawler queues and throttling.\n  - Red (`#EF4444`) for DOM selector mismatches and rate limits.\n\n### Cards \u0026 Code Blocks\n- **Card Panel:** 1px border `#21262D`, background `#0E1117`, padding `1rem`. Header rows contain title, action slot, and a bottom border dividing body content.\n- **Log Streamer / Code Inspector:** `#090A0F` background, full `JetBrains Mono` text display, inline copy-to-clipboard button at top right pinned with `space-sm` offset.",
+                        "colorVariant":  "FIDELITY",
+                        "overridePrimaryColor":  "#f97316",
+                        "overrideSecondaryColor":  "#ea580c",
+                        "overrideTertiaryColor":  "#38bdf8",
+                        "overrideNeutralColor":  "#090a0f",
+                        "spacingScale":  2,
+                        "typography":  {
+                                           "label-md":  {
+                                                            "fontFamily":  "Geist",
+                                                            "fontSize":  "13px",
+                                                            "fontWeight":  "500",
+                                                            "lineHeight":  "18px",
+                                                            "letterSpacing":  "0.01em"
+                                                        },
+                                           "body-lg":  {
+                                                           "fontFamily":  "Geist",
+                                                           "fontSize":  "16px",
+                                                           "fontWeight":  "400",
+                                                           "lineHeight":  "24px",
+                                                           "letterSpacing":  "-0.005em"
+                                                       },
+                                           "headline-xl-mobile":  {
+                                                                      "fontFamily":  "Space Grotesk",
+                                                                      "fontSize":  "28px",
+                                                                      "fontWeight":  "700",
+                                                                      "lineHeight":  "34px",
+                                                                      "letterSpacing":  "-0.02em"
+                                                                  },
+                                           "headline-sm":  {
+                                                               "fontFamily":  "Space Grotesk",
+                                                               "fontSize":  "16px",
+                                                               "fontWeight":  "600",
+                                                               "lineHeight":  "24px",
+                                                               "letterSpacing":  "-0.01em"
+                                                           },
+                                           "body-sm":  {
+                                                           "fontFamily":  "Geist",
+                                                           "fontSize":  "12px",
+                                                           "fontWeight":  "400",
+                                                           "lineHeight":  "16px",
+                                                           "letterSpacing":  "0"
+                                                       },
+                                           "headline-lg":  {
+                                                               "fontFamily":  "Space Grotesk",
+                                                               "fontSize":  "24px",
+                                                               "fontWeight":  "600",
+                                                               "lineHeight":  "32px",
+                                                               "letterSpacing":  "-0.02em"
+                                                           },
+                                           "headline-md":  {
+                                                               "fontFamily":  "Space Grotesk",
+                                                               "fontSize":  "20px",
+                                                               "fontWeight":  "600",
+                                                               "lineHeight":  "28px",
+                                                               "letterSpacing":  "-0.015em"
+                                                           },
+                                           "label-sm":  {
+                                                            "fontFamily":  "Geist",
+                                                            "fontSize":  "11px",
+                                                            "fontWeight":  "500",
+                                                            "lineHeight":  "14px",
+                                                            "letterSpacing":  "0.02em"
+                                                        },
+                                           "body-md":  {
+                                                           "fontFamily":  "Geist",
+                                                           "fontSize":  "14px",
+                                                           "fontWeight":  "400",
+                                                           "lineHeight":  "20px",
+                                                           "letterSpacing":  "0"
+                                                       },
+                                           "headline-xl":  {
+                                                               "fontFamily":  "Space Grotesk",
+                                                               "fontSize":  "36px",
+                                                               "fontWeight":  "700",
+                                                               "lineHeight":  "44px",
+                                                               "letterSpacing":  "-0.03em"
+                                                           },
+                                           "code-md":  {
+                                                           "fontFamily":  "JetBrains Mono",
+                                                           "fontSize":  "13px",
+                                                           "fontWeight":  "500",
+                                                           "lineHeight":  "20px",
+                                                           "letterSpacing":  "-0.01em"
+                                                       },
+                                           "code-sm":  {
+                                                           "fontFamily":  "JetBrains Mono",
+                                                           "fontSize":  "11px",
+                                                           "fontWeight":  "500",
+                                                           "lineHeight":  "16px",
+                                                           "letterSpacing":  "0"
+                                                       }
+                                       },
+                        "spacing":  {
+                                        "margin-md":  "1.5rem",
+                                        "margin-lg":  "2rem",
+                                        "margin":  "1rem",
+                                        "gutter":  "1rem",
+                                        "space-xs":  "0.25rem",
+                                        "space-lg":  "1rem",
+                                        "space-xl":  "1.5rem",
+                                        "space-sm":  "0.5rem",
+                                        "space-md":  "0.75rem",
+                                        "gutter-lg":  "1.5rem"
+                                    },
+                        "headlineFontFamily":  "Space Grotesk",
+                        "bodyFontFamily":  "Geist",
+                        "labelFontFamily":  "JetBrains Mono"
+                    },
+    "screenInstances":  [
+                            {
+                                "id":  "00864c46ff704fe5b21954216a41a20b",
+                                "sourceScreen":  "projects/11100839460552024747/screens/00864c46ff704fe5b21954216a41a20b",
+                                "x":  1344,
+                                "y":  2443,
+                                "width":  1280,
+                                "height":  866,
+                                "label":  "Generating Screen..."
+                            },
+                            {
+                                "id":  "2fd834d6a54d43b5b1e88ae71f453cdf",
+                                "sourceScreen":  "projects/11100839460552024747/screens/2fd834d6a54d43b5b1e88ae71f453cdf",
+                                "x":  3712,
+                                "y":  5185,
+                                "width":  1280,
+                                "height":  914,
+                                "label":  "Generating Screen..."
+                            },
+                            {
+                                "id":  "3677ca57e74e4acea40b248ca04e0a32",
+                                "sourceScreen":  "projects/11100839460552024747/screens/3677ca57e74e4acea40b248ca04e0a32",
+                                "x":  2368,
+                                "y":  5185,
+                                "width":  1280,
+                                "height":  846,
+                                "label":  "Generating Screen..."
+                            },
+                            {
+                                "id":  "37171e9168ef404f9ad3a1d42e4a7338",
+                                "sourceScreen":  "projects/11100839460552024747/screens/37171e9168ef404f9ad3a1d42e4a7338",
+                                "y":  2443,
+                                "width":  1280,
+                                "height":  1214,
+                                "label":  "Generating Screen..."
+                            },
+                            {
+                                "id":  "78991f97db944523a7d20b80d877c24a",
+                                "sourceScreen":  "projects/11100839460552024747/screens/78991f97db944523a7d20b80d877c24a",
+                                "x":  1024,
+                                "y":  5185,
+                                "width":  1280,
+                                "height":  1086,
+                                "label":  "Generating Screen..."
+                            },
+                            {
+                                "id":  "9432f167b9ad4b3a8b9c8b35f8bf5727",
+                                "sourceScreen":  "projects/11100839460552024747/screens/9432f167b9ad4b3a8b9c8b35f8bf5727",
+                                "x":  2688,
+                                "y":  2443,
+                                "width":  1280,
+                                "height":  1021,
+                                "label":  "Generating Screen..."
+                            },
+                            {
+                                "id":  "a2253b9fb40a4b32b1071a6c734ed6c9",
+                                "sourceScreen":  "projects/11100839460552024747/screens/a2253b9fb40a4b32b1071a6c734ed6c9",
+                                "x":  1024,
+                                "width":  1280,
+                                "height":  846,
+                                "label":  "Generating Screen..."
+                            },
+                            {
+                                "id":  "assets_0ee28f15404249ac86746622b93adea9",
+                                "width":  960,
+                                "height":  540,
+                                "sourceAsset":  "assets/0ee28f15404249ac86746622b93adea9",
+                                "type":  "DESIGN_SYSTEM_INSTANCE"
+                            },
+                            {
+                                "id":  "assets_d6d4bced86c447c385a123f9d2edb858",
+                                "y":  5185,
+                                "width":  960,
+                                "height":  540,
+                                "sourceAsset":  "assets/d6d4bced86c447c385a123f9d2edb858",
+                                "type":  "DESIGN_SYSTEM_INSTANCE"
+                            },
+                            {
+                                "id":  "c16b7116a8bc4a7ab7b06a9f60522d60",
+                                "sourceScreen":  "projects/11100839460552024747/screens/c16b7116a8bc4a7ab7b06a9f60522d60",
+                                "y":  3913,
+                                "width":  1280,
+                                "height":  1016,
+                                "label":  "Generating Screen..."
+                            },
+                            {
+                                "id":  "e5301b2b284a43fba56a22001dffe1f9",
+                                "sourceScreen":  "projects/11100839460552024747/screens/e5301b2b284a43fba56a22001dffe1f9",
+                                "x":  5056,
+                                "y":  5185,
+                                "width":  1280,
+                                "height":  1268,
+                                "label":  "Generating Screen..."
+                            },
+                            {
+                                "id":  "fbc4dec3d5164c9a80375451229b6de0",
+                                "sourceScreen":  "projects/11100839460552024747/screens/fbc4dec3d5164c9a80375451229b6de0",
+                                "y":  1102,
+                                "width":  1280,
+                                "height":  1085,
+                                "label":  "Generating Screen..."
+                            }
+                        ],
+    "metadata":  {
+                     "userRole":  "OWNER"
+                 }
+}

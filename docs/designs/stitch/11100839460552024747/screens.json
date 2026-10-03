@@ -1,0 +1,164 @@
+﻿{
+    "screens":  [
+                    {
+                        "name":  "projects/11100839460552024747/screens/2fd834d6a54d43b5b1e88ae71f453cdf",
+                        "title":  "HN Scraper — Internal BFF Login (Light Mode)",
+                        "screenshot":  {
+                                           "name":  "projects/11100839460552024747/screens/2fd834d6a54d43b5b1e88ae71f453cdf/fileEntries/screenshot",
+                                           "downloadUrl":  "https://lh3.googleusercontent.com/aida/AEtjO1WQkxaMRy78RQxMJ1SjgoG6DhdDoXta4bTS-P2KK2NnOow9_k0fmfIpfyAxektY7S0P-oh6o-9Hqlqe73Jkc8Uw3aZfYcjegXU9DTChTTVYRRqvO13QISeA-VTX9B-ETwcGgbArzZfqJVurA-5qPUX1r0ZnFilmFP6ZTSu_YJxEPSlT4z8_Wpw4eASg2qXUJ-yeO4GwBC0pfGvmszcEX_WsOSPcD_639_2D15Av9v7w4PNJJE29vjWpY1Y"
+                                       },
+                        "htmlCode":  {
+                                         "name":  "projects/11100839460552024747/screens/2fd834d6a54d43b5b1e88ae71f453cdf/fileEntries/html",
+                                         "downloadUrl":  "https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ8Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpbCiVodG1sXzAwMDY1Y2U4MTRlMjBmYTcwNTNiNGVkMGUzMjY5MjhjEgsSBxCdmYDLnh4YAZIBJAoKcHJvamVjdF9pZBIWQhQxMTEwMDgzOTQ2MDU1MjAyNDc0Nw\u0026filename=\u0026opi=89354086",
+                                         "mimeType":  "text/html"
+                                     },
+                        "width":  "2560",
+                        "height":  "2048",
+                        "deviceType":  "DESKTOP"
+                    },
+                    {
+                        "name":  "projects/11100839460552024747/screens/00864c46ff704fe5b21954216a41a20b",
+                        "title":  "HN Scraper — State: Loading (Frame A)",
+                        "screenshot":  {
+                                           "name":  "projects/11100839460552024747/screens/00864c46ff704fe5b21954216a41a20b/fileEntries/screenshot",
+                                           "downloadUrl":  "https://lh3.googleusercontent.com/aida/AEtjO1UQ__Y0ukL5g72eAEXKZm-bQGrpqqRfnqt_pMnBz4610drxa06MvEnFn4Q-SHfWtLvYsqWgoEfvn49REoUcK-MufajsPMt0FmYjONlKVeRfwCScOYVlQnrneotD-LBTO5GoA2-csP1I1cfPr7UJCHFignVHda5zk1MYEy7E7fDvs7bnU8b416oRgr5sDL6w3HURVTNCm-ALWTWcqHGw81ZvgwdAdTWZy9BjiPduvEyKb4VtmM3Q05e3HMro"
+                                       },
+                        "htmlCode":  {
+                                         "name":  "projects/11100839460552024747/screens/00864c46ff704fe5b21954216a41a20b/fileEntries/html",
+                                         "downloadUrl":  "https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ8Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpbCiVodG1sXzAwMDY1Y2U4MDA4MDhkZjcwNzc5YTA4M2RjMDdmMDY0EgsSBxCdmYDLnh4YAZIBJAoKcHJvamVjdF9pZBIWQhQxMTEwMDgzOTQ2MDU1MjAyNDc0Nw\u0026filename=\u0026opi=89354086",
+                                         "mimeType":  "text/html"
+                                     },
+                        "width":  "2560",
+                        "height":  "2048",
+                        "deviceType":  "DESKTOP"
+                    },
+                    {
+                        "name":  "projects/11100839460552024747/screens/78991f97db944523a7d20b80d877c24a",
+                        "title":  "HN Scraper — Filter \u0026 Results Table (Light)",
+                        "screenshot":  {
+                                           "name":  "projects/11100839460552024747/screens/78991f97db944523a7d20b80d877c24a/fileEntries/screenshot",
+                                           "downloadUrl":  "https://lh3.googleusercontent.com/aida/AEtjO1VhS877lYPvrynQXlb3kxdpUc8wA-PiFtxb_LnOTQ9HdKpRJgcaBcZxJMegZyT2oFNdZwjuj2StRsj6cNamNMekmKM0INSBpqe8O7TOee5SQcjEcLyLclXMbMMDNv0zxRg4PHgY8HqCIiVaJ2zELs4yZLuOddLsVj5qWUrM984lHAUJA1mTZFgQVVLYlMi1O9WsOOpvtyq3Ok_pkJfZdxkNczvk57RW2EsHjC2u9RA5RtFz8RgNJMHmPgE"
+                                       },
+                        "htmlCode":  {
+                                         "name":  "projects/11100839460552024747/screens/78991f97db944523a7d20b80d877c24a/fileEntries/html",
+                                         "downloadUrl":  "https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ8Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpbCiVodG1sXzAwMDY1Y2U4MTJhNDczODQwMzM4NWJkMzhiMWM3YjY0EgsSBxCdmYDLnh4YAZIBJAoKcHJvamVjdF9pZBIWQhQxMTEwMDgzOTQ2MDU1MjAyNDc0Nw\u0026filename=\u0026opi=89354086",
+                                         "mimeType":  "text/html"
+                                     },
+                        "width":  "2560",
+                        "height":  "2172",
+                        "deviceType":  "DESKTOP"
+                    },
+                    {
+                        "name":  "projects/11100839460552024747/screens/3677ca57e74e4acea40b248ca04e0a32",
+                        "title":  "HN Scraper — Internal BFF Login (Light)",
+                        "screenshot":  {
+                                           "name":  "projects/11100839460552024747/screens/3677ca57e74e4acea40b248ca04e0a32/fileEntries/screenshot",
+                                           "downloadUrl":  "https://lh3.googleusercontent.com/aida/AEtjO1WcprMHcEwlIyzHGYBOBqPYpBoyFozHoIyeGIQCaU7fobRro_HH_9_E7FOTqf-6eE9XgZx2SKdJMPyllVYGiFqzLyaV-mesPlcsIdkQZp09sm_k2gFlfWFEvaC9gHAxqQHOp6ymr7ZVNS7C3dFmrq3yonHRH1VPOcm5igl-7HPwzk2UkqNfkDgrR2ZLTLast26EkcX2XURvAEfSuddO57Bqb2T_fl2plY61bAdp0MlGk7pHQJlPePXox1jg"
+                                       },
+                        "htmlCode":  {
+                                         "name":  "projects/11100839460552024747/screens/3677ca57e74e4acea40b248ca04e0a32/fileEntries/html",
+                                         "downloadUrl":  "https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ8Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpbCiVodG1sXzAwMDY1Y2U4MTJhYjQ5MDQwNzc5YTAxMWMyMTNhMmViEgsSBxCdmYDLnh4YAZIBJAoKcHJvamVjdF9pZBIWQhQxMTEwMDgzOTQ2MDU1MjAyNDc0Nw\u0026filename=\u0026opi=89354086",
+                                         "mimeType":  "text/html"
+                                     },
+                        "width":  "2560",
+                        "height":  "2048",
+                        "deviceType":  "DESKTOP"
+                    },
+                    {
+                        "name":  "projects/11100839460552024747/screens/9432f167b9ad4b3a8b9c8b35f8bf5727",
+                        "title":  "HN Scraper — State: Error (Frame C)",
+                        "screenshot":  {
+                                           "name":  "projects/11100839460552024747/screens/9432f167b9ad4b3a8b9c8b35f8bf5727/fileEntries/screenshot",
+                                           "downloadUrl":  "https://lh3.googleusercontent.com/aida/AEtjO1XpMXtIugUqvyEd8MPxUOn6r6EtzOEDWKcTEBKOR3gVWyQTVCShIus6SVRGH8CbDvGdqdk2uOa3BTJiPP9CZSdd0F3F8wd9onv78tvmSgAICaPr7X1kL0E4cwQdcONy7UEkSYkOaO3-7ZoXR3ZW-iu-mTk7j4uZ8joC1u4uLHMIVzkUggZhi5hVAyqWinh980nHAv3FMOme7ayB-D3nf2H5YdRQk5UhH-R_XkryFB_myPRiCcXGProgYvg"
+                                       },
+                        "htmlCode":  {
+                                         "name":  "projects/11100839460552024747/screens/9432f167b9ad4b3a8b9c8b35f8bf5727/fileEntries/html",
+                                         "downloadUrl":  "https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ8Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpbCiVodG1sXzAwMDY1Y2U4MDA4YmJlODEwMzM4NWJkMzhiMWM3YjY0EgsSBxCdmYDLnh4YAZIBJAoKcHJvamVjdF9pZBIWQhQxMTEwMDgzOTQ2MDU1MjAyNDc0Nw\u0026filename=\u0026opi=89354086",
+                                         "mimeType":  "text/html"
+                                     },
+                        "width":  "2560",
+                        "height":  "2076",
+                        "deviceType":  "DESKTOP"
+                    },
+                    {
+                        "name":  "projects/11100839460552024747/screens/a2253b9fb40a4b32b1071a6c734ed6c9",
+                        "title":  "HN Scraper — Internal BFF Login",
+                        "screenshot":  {
+                                           "name":  "projects/11100839460552024747/screens/a2253b9fb40a4b32b1071a6c734ed6c9/fileEntries/screenshot",
+                                           "downloadUrl":  "https://lh3.googleusercontent.com/aida/AEtjO1XykrFUiMy7RdVigP1bBIMXUlPtRcvbj-fs8UpT2yE-Uylq5V50CpduiT8TQT0b2GvVwq54nK65iJ6ybA_guOfeb11ETWJNNOKpW8Yt26_nFtAOKDW0Fty5qdeuWcdHqhsOJI1G88i8MzvcNev8NUOhEXqI4kWjgNy-BaREUPdlPKxfGxNExO4vpkoGYg9kR1Zldww3R3h8qWmasJJp4TsHZ1v3MUEKzGNsJ8uaJg5CnhvFp20VCpV-6R8"
+                                       },
+                        "htmlCode":  {
+                                         "name":  "projects/11100839460552024747/screens/a2253b9fb40a4b32b1071a6c734ed6c9/fileEntries/html",
+                                         "downloadUrl":  "https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ8Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpbCiVodG1sXzAwMDY1Y2U3ZjkwZTcyOTgwMWE2MDNmZmMyMTdlY2Q4EgsSBxCdmYDLnh4YAZIBJAoKcHJvamVjdF9pZBIWQhQxMTEwMDgzOTQ2MDU1MjAyNDc0Nw\u0026filename=\u0026opi=89354086",
+                                         "mimeType":  "text/html"
+                                     },
+                        "width":  "2560",
+                        "height":  "2048",
+                        "deviceType":  "DESKTOP"
+                    },
+                    {
+                        "name":  "projects/11100839460552024747/screens/37171e9168ef404f9ad3a1d42e4a7338",
+                        "title":  "HN Scraper — State: Empty (Frame B)",
+                        "screenshot":  {
+                                           "name":  "projects/11100839460552024747/screens/37171e9168ef404f9ad3a1d42e4a7338/fileEntries/screenshot",
+                                           "downloadUrl":  "https://lh3.googleusercontent.com/aida/AEtjO1WXAnBXX6tkgz2RhUPArfX9gNHgot0F6s6f2MqJqzOblYeUxzBmEG9nCMQJoWUW-pRs3fqOKgPdnh4WGZn5UgVHgK9aly06-8IqxgiSeCZBAEoi7_taZ1kNWa4ZnXu13yIrDWZEZoazsX9kzTTuyuKHCHFod6Fixg9fnMqD42we0mj0vnT1qgflzmzc_6bi050t5zSbZcJJXLBg32OnYRfEM1_dqBQrbndM9oFgsuxBh6xqkwS4fH8Fdl4"
+                                       },
+                        "htmlCode":  {
+                                         "name":  "projects/11100839460552024747/screens/37171e9168ef404f9ad3a1d42e4a7338/fileEntries/html",
+                                         "downloadUrl":  "https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ8Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpbCiVodG1sXzAwMDY1Y2U4MDA0YTdlMzAwN2M0YzllMGVkMTUwMjNjEgsSBxCdmYDLnh4YAZIBJAoKcHJvamVjdF9pZBIWQhQxMTEwMDgzOTQ2MDU1MjAyNDc0Nw\u0026filename=\u0026opi=89354086",
+                                         "mimeType":  "text/html"
+                                     },
+                        "width":  "2560",
+                        "height":  "2428",
+                        "deviceType":  "DESKTOP"
+                    },
+                    {
+                        "name":  "projects/11100839460552024747/screens/e5301b2b284a43fba56a22001dffe1f9",
+                        "title":  "HN Scraper — Filter \u0026 Results Table (Light Mode)",
+                        "screenshot":  {
+                                           "name":  "projects/11100839460552024747/screens/e5301b2b284a43fba56a22001dffe1f9/fileEntries/screenshot",
+                                           "downloadUrl":  "https://lh3.googleusercontent.com/aida/AEtjO1UtINoiFAv5JGxJZ7uj5ZimoDrTtxWpatCJkLH1tIx1x541011IQnC1vC_ZYxlMXZebln3uPeklhDzI7NywMiE5gYqfxaBzyRMJjAE1LddDJOK9csoi3ZAZmeY6b7NGEiLy7UspBuPzTU1J8jf_15H5sMY8P3ZcNRPmIpWidxMhAMPXLLuuIGCq3JJSkKJEW42cr0H5UgqQieTgf9QxRa1521w_SnnNJMnKK7D2MANLhxoxyFi79XAQlwc"
+                                       },
+                        "htmlCode":  {
+                                         "name":  "projects/11100839460552024747/screens/e5301b2b284a43fba56a22001dffe1f9/fileEntries/html",
+                                         "downloadUrl":  "https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ8Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpbCiVodG1sXzAwMDY1Y2U4MTQ4Y2U4ODMwNzc5ODQ0ZWY4MDkwMWNmEgsSBxCdmYDLnh4YAZIBJAoKcHJvamVjdF9pZBIWQhQxMTEwMDgzOTQ2MDU1MjAyNDc0Nw\u0026filename=\u0026opi=89354086",
+                                         "mimeType":  "text/html"
+                                     },
+                        "width":  "2560",
+                        "height":  "2538",
+                        "deviceType":  "DESKTOP"
+                    },
+                    {
+                        "name":  "projects/11100839460552024747/screens/fbc4dec3d5164c9a80375451229b6de0",
+                        "title":  "HN Scraper — Filter \u0026 Results Table",
+                        "screenshot":  {
+                                           "name":  "projects/11100839460552024747/screens/fbc4dec3d5164c9a80375451229b6de0/fileEntries/screenshot",
+                                           "downloadUrl":  "https://lh3.googleusercontent.com/aida/AEtjO1WEGdJQL4OsBrEWs6XILMmDd9BrO2rp0xYvbCPsoBJWOim0x3yu5dRLbehhZLyZ_maBxD87fiHpfmgPepqZnjss7Y-2vOB79Li7QjoJCwztaEzHe0yX7f56gUeBdfz3n_ZsF5AlClViWkiXQQdETw1YfKUY_31UUHViXaHgGmOS9SSs8WAzZ4E4j_tSbar-TDad20dpxRnwNK7iQFgDglZp0L_eiY0FwqaruXqoGiuJR70cHznqTzKmCH8m"
+                                       },
+                        "htmlCode":  {
+                                         "name":  "projects/11100839460552024747/screens/fbc4dec3d5164c9a80375451229b6de0/fileEntries/html",
+                                         "downloadUrl":  "https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ8Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpbCiVodG1sXzAwMDY1Y2U3ZmM0NTAwMjcwNzllNmU5OTUyMzEwMjBjEgsSBxCdmYDLnh4YAZIBJAoKcHJvamVjdF9pZBIWQhQxMTEwMDgzOTQ2MDU1MjAyNDc0Nw\u0026filename=\u0026opi=89354086",
+                                         "mimeType":  "text/html"
+                                     },
+                        "width":  "2560",
+                        "height":  "2172",
+                        "deviceType":  "DESKTOP"
+                    },
+                    {
+                        "name":  "projects/11100839460552024747/screens/c16b7116a8bc4a7ab7b06a9f60522d60",
+                        "title":  "HN Scraper — 404 Not Found",
+                        "screenshot":  {
+                                           "name":  "projects/11100839460552024747/screens/c16b7116a8bc4a7ab7b06a9f60522d60/fileEntries/screenshot",
+                                           "downloadUrl":  "https://lh3.googleusercontent.com/aida/AEtjO1WioB0M5GnaH-y3mh50KCMDv5K3oo4Nh50oA-WW0_pyVEJHty-TANp3otHYebX16y8JdGFhchY95tAUnk-9j5gHWevs3MSPZ8-yhpNbkIk4Wpz-OSvmnXXjjDcyZxfXjzcIjP9gWeNHGyfyzWpd-SDyYSpgAWk7GhYGNb7Yibe7hAHGKxzkIxvVUywsyO0dkcGZ2Mrs1yOWiK068d_4YCNvniB5fd0OW53OLtbKJntZMr8x8F7q1UOu0POP"
+                                       },
+                        "htmlCode":  {
+                                         "name":  "projects/11100839460552024747/screens/c16b7116a8bc4a7ab7b06a9f60522d60/fileEntries/html",
+                                         "downloadUrl":  "https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ8Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpbCiVodG1sXzAwMDY1Y2U4MGYyMzAyM2YwMjA3OTllNTcyMTFlNmY2EgsSBxCdmYDLnh4YAZIBJAoKcHJvamVjdF9pZBIWQhQxMTEwMDgzOTQ2MDU1MjAyNDc0Nw\u0026filename=\u0026opi=89354086",
+                                         "mimeType":  "text/html"
+                                     },
+                        "width":  "2560",
+                        "height":  "2048",
+                        "deviceType":  "DESKTOP"
+                    }
+                ]
+}

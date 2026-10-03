@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="web_standard" name="shell-type"/>
+<title>HN Scraper - Dataset Filter Protocol</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ["Geist", "sans-serif"],
+            mono: ["JetBrains Mono", "monospace"],
+          }
+        }
+      }
+    };
+  </script>
+<style>
+    @layer base {
+      html, body {
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        overscroll-behavior: none;
+      }
+    }
+    ::-webkit-scrollbar {
+      display: none;
+    }
+    .bg-grid-pattern {
+      background-size: 32px 32px;
+      background-image: linear-gradient(to right, rgba(226, 232, 240, 0.45) 1px, transparent 1px),
+                        linear-gradient(to bottom, rgba(226, 232, 240, 0.45) 1px, transparent 1px);
+    }
+  </style>
+</head>
+<body class="bg-slate-50 font-sans text-slate-900 antialiased min-h-screen flex flex-col selection:bg-orange-100 selection:text-orange-900">
+<!-- Top Navigation Header -->
+<header class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200/80 shadow-[0_1px_3px_rgba(0,0,0,0.03)]">
+<div class="h-14 max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-4">
+<div class="flex items-center gap-4 lg:gap-6">
+<!-- Logo -->
+<div class="flex items-center gap-2.5">
+<div class="w-6 h-6 rounded bg-orange-600 flex items-center justify-center shadow-sm shadow-orange-600/20">
+<span class="font-mono text-xs font-bold text-white">Y</span>
+</div>
+<span class="font-semibold text-slate-900 tracking-tight text-sm sm:text-base">HN Scraper</span>
+</div>
+<div class="h-4 w-px bg-slate-200 hidden sm:block"></div>
+<!-- Telemetry Badge -->
+<div class="hidden sm:flex items-center gap-1.5 font-mono text-xs text-slate-500 bg-slate-100/80 px-2.5 py-1 rounded border border-slate-200/60">
+<span class="material-symbols-outlined text-slate-400 text-[14px]">terminal</span>
+<span>BFF v1.2.0 • auth: Bearer JWT active</span>
+</div>
+<!-- Navigation Tabs -->
+<nav class="hidden md:flex items-center gap-1 ml-2">
+<a aria-current="page" class="bg-slate-100 text-slate-900 font-medium text-xs rounded px-3 py-1.5 transition-colors border border-slate-200/80 shadow-xs" data-path="overview" href="#">Overview</a>
+<a class="text-slate-600 hover:text-slate-900 hover:bg-slate-50 font-medium text-xs rounded px-3 py-1.5 transition-colors" data-path="pipeline-jobs" href="#">Pipelines</a>
+<a class="text-slate-600 hover:text-slate-900 hover:bg-slate-50 font-medium text-xs rounded px-3 py-1.5 transition-colors" data-path="scraper-terminal" href="#">Terminal</a>
+<a class="text-slate-600 hover:text-slate-900 hover:bg-slate-50 font-medium text-xs rounded px-3 py-1.5 transition-colors" data-path="schema-inspector" href="#">Schema</a>
+</nav>
+</div>
+<!-- Right Utility Section -->
+<div class="flex items-center gap-3 sm:gap-4">
+<div class="hidden sm:flex items-center gap-2 bg-slate-50 border border-slate-200/70 px-2.5 py-1 rounded-full">
+<span class="w-2 h-2 rounded-full bg-emerald-500 ring-2 ring-emerald-500/20"></span>
+<span class="font-mono text-xs text-slate-600">developer@internal.company</span>
+</div>
+<div class="h-4 w-px bg-slate-200 hidden sm:block"></div>
+<a class="font-medium text-xs text-slate-600 hover:text-slate-900 transition-colors flex items-center gap-1" data-path="login" href="#">
+<span>Sign out</span>
+</a>
+<div class="w-8 h-8 rounded-full bg-slate-100 border border-slate-200 flex items-center justify-center text-slate-600 font-medium text-xs shadow-xs">
+<span class="material-symbols-outlined text-[18px]">person</span>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content Layout -->
+<main class="w-full pt-14 bg-slate-50 bg-grid-pattern flex-1">
+<div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-6">
+<div class="flex flex-col w-full space-y-5">
+<!-- Runtime Telemetry Strip -->
+<section class="w-full">
+<div class="bg-white px-4 py-2.5 rounded-lg border border-slate-200/90 shadow-xs flex flex-wrap items-center justify-between gap-3 text-slate-600">
+<div class="flex flex-wrap items-center gap-3 sm:gap-4 font-mono text-xs">
+<span class="flex items-center gap-2 font-medium text-slate-900">
+<span class="w-2 h-2 rounded-full bg-emerald-500 shadow-sm animate-pulse"></span>
+<span class="text-slate-400 font-normal">ENDPOINT:</span>
+<span class="text-orange-600 bg-orange-50 px-1.5 py-0.5 rounded border border-orange-200/50">/api/v1/entries</span>
+</span>
+<span class="text-slate-300 font-mono">•</span>
+<span class="text-slate-600">SESSION: Bearer JWT [RS256 verified]</span>
+<span class="text-slate-300 font-mono hidden md:inline">•</span>
+<span class="text-slate-500 hidden md:inline">UPSTREAM: news.ycombinator.com (cluster-node-04)</span>
+</div>
+<div class="flex items-center gap-3 font-mono text-xs">
+<span class="bg-slate-100 border border-slate-200/80 px-2 py-0.5 rounded text-slate-600 flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[14px] text-sky-600">autorenew</span>
+<span>Sync fresh: 42s ago</span>
+</span>
+<span class="text-emerald-700 bg-emerald-50 border border-emerald-200/60 font-semibold px-2 py-0.5 rounded">HTTP 200 OK</span>
+</div>
+</div>
+</section>
+<!-- Filter Controls Protocol Block -->
+<section class="w-full">
+<div class="bg-white p-5 sm:p-6 rounded-xl border border-slate-200 shadow-sm flex flex-col gap-5">
+<div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-3 pb-1 border-b border-slate-100">
+<div>
+<h1 class="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight">Dataset Filter Protocol</h1>
+<p class="text-sm text-slate-500 mt-1">Execute deterministic sorting and token thresholds over scraped live Hacker News stream.</p>
+</div>
+<div class="bg-orange-50 border border-orange-200/80 px-3 py-1.5 rounded-lg font-mono text-xs text-orange-700 flex items-center gap-1.5 shadow-xs" id="rule-badge">
+<span class="material-symbols-outlined text-[15px] text-orange-600">tune</span>
+<span class="font-medium" id="rule-badge-text">Rule: title.word_count &gt; 5 | sort: comments:desc</span>
+</div>
+</div>
+<!-- Filter Cards Radio Group -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<!-- Filter A Card -->
+<label class="relative flex items-start gap-3.5 p-4 rounded-lg cursor-pointer transition-all bg-orange-50/50 text-slate-900 ring-2 ring-orange-500 border border-orange-200 shadow-xs" id="card-filter-a">
+<input checked="" class="mt-1 h-4 w-4 text-orange-600 accent-orange-600 cursor-pointer focus:ring-orange-500" name="hn_filter" onchange="switchFilter('A')" type="radio" value="A"/>
+<div class="flex flex-col gap-1 min-w-0">
+<div class="flex items-center gap-2">
+<span class="font-semibold text-slate-900 text-sm sm:text-base">Filter A: Titles &gt; 5 words</span>
+<span class="bg-orange-100 text-orange-700 font-mono text-[11px] font-semibold px-2 py-0.5 rounded border border-orange-200/70" id="tag-filter-a">Active</span>
+</div>
+<p class="text-xs text-slate-500 leading-relaxed">
+                    Filters entries strictly having &gt; 5 words in title.
+                    <span class="text-slate-700 block font-mono text-xs mt-1 font-medium">Automatically ordered by comments (descending).</span>
+</p>
+</div>
+</label>
+<!-- Filter B Card -->
+<label class="relative flex items-start gap-3.5 p-4 rounded-lg cursor-pointer transition-all bg-white text-slate-600 hover:text-slate-900 border border-slate-200 hover:border-slate-300 shadow-xs" id="card-filter-b">
+<input class="mt-1 h-4 w-4 text-orange-600 accent-orange-600 cursor-pointer focus:ring-orange-500" name="hn_filter" onchange="switchFilter('B')" type="radio" value="B"/>
+<div class="flex flex-col gap-1 min-w-0">
+<div class="flex items-center gap-2">
+<span class="font-semibold text-slate-900 text-sm sm:text-base">Filter B: Titles ≤ 5 words</span>
+<span class="hidden bg-orange-100 text-orange-700 font-mono text-[11px] font-semibold px-2 py-0.5 rounded border border-orange-200/70" id="tag-filter-b">Active</span>
+</div>
+<p class="text-xs text-slate-500 leading-relaxed">
+                    Filters short headlines having 5 words or fewer.
+                    <span class="text-slate-700 block font-mono text-xs mt-1 font-medium">Automatically ordered by points (descending).</span>
+</p>
+</div>
+</label>
+</div>
+<!-- Action Row -->
+<div class="flex flex-wrap items-center justify-between pt-1 gap-3 border-t border-slate-100">
+<div class="flex items-center gap-2.5">
+<button class="bg-orange-600 hover:bg-orange-700 active:scale-[0.98] text-white font-medium text-xs sm:text-sm px-4 py-2 rounded-lg flex items-center gap-1.5 shadow-sm transition-all cursor-pointer ring-offset-2 focus:ring-2 focus:ring-orange-500" id="run-query-btn" onclick="triggerQueryPulse()">
+<span class="material-symbols-outlined text-[18px]">play_arrow</span>
+<span>Run Query</span>
+<kbd class="font-mono text-[11px] bg-orange-700/50 text-white/90 px-1.5 py-0.5 rounded ml-1 border border-orange-500">↵ Enter</kbd>
+</button>
+<button class="bg-white hover:bg-slate-50 border border-slate-200 text-slate-700 font-medium text-xs sm:text-sm px-3.5 py-2 rounded-lg flex items-center gap-1.5 transition-colors cursor-pointer shadow-xs" onclick="resetDefaults()">
+<span class="material-symbols-outlined text-[17px] text-slate-500">restart_alt</span>
+<span>Reset</span>
+</button>
+</div>
+<div class="flex items-center gap-3 font-mono text-xs text-slate-500">
+<span class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-orange-600"></span>
+<span class="text-slate-700">Cluster Query Engine v2.4</span>
+</span>
+<span class="text-slate-300">•</span>
+<span>Latency: <strong class="text-slate-900 font-mono font-semibold">1.4ms</strong></span>
+</div>
+</div>
+</div>
+</section>
+<!-- Strict Utilitarian Results Table -->
+<section class="w-full flex flex-col bg-white rounded-xl border border-slate-200 overflow-hidden shadow-sm">
+<div class="w-full overflow-x-auto">
+<table class="w-full text-left text-sm min-w-[760px]">
+<thead>
+<tr class="bg-slate-50 border-b border-slate-200 text-slate-500 font-mono text-xs uppercase tracking-wider font-semibold">
+<th class="py-3 px-5 w-16 text-center">rank</th>
+<th class="py-3 px-5">title &amp; origin</th>
+<th class="py-3 px-5 w-36 text-right">points</th>
+<th class="py-3 px-5 w-36 text-right">comments</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100 text-slate-900" id="table-body">
+<!-- Dynamically populated via script -->
+</tbody>
+</table>
+</div>
+<!-- Table Footer Status Bar -->
+<div class="bg-slate-50 border-t border-slate-200 px-5 py-3 flex flex-wrap items-center justify-between gap-3 font-mono text-xs text-slate-500">
+<div class="flex items-center gap-2">
+<span class="text-slate-800 font-semibold" id="footer-count">Showing 11 entries matching Filter A</span>
+<span class="text-slate-300">•</span>
+<span class="text-slate-600" id="footer-payload">Response payload: 4.8 KB</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span>Ingested via Authenticated BFF API</span>
+<span class="text-orange-600 font-medium font-mono">(Bearer JWT)</span>
+</div>
+</div>
+</section>
+</div>
+</div>
+</main>
+<!-- Page Footer -->
+<footer class="w-full bg-white border-t border-slate-200 py-4 mt-auto">
+<div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-2 font-mono text-xs text-slate-500">
+<span class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+        HN Scraper BFF Core • Node Scrape Cluster 04
+      </span>
+<span>Telemetry Sync: Active (0.8ms)</span>
+</div>
+</footer>
+<script>
+    const datasetFilterA = [
+      { rank: 1, title: 'Reflections on 10,000 Hours of Writing Distributed Systems in Go', domain: 'brooker.co.za', words: 9, points: '1,420', comments: 842 },
+      { rank: 2, title: 'Why SQLite is the Ideal Database for Edge Deployments in 2025', domain: 'fly.io', words: 11, points: '985', comments: 674 },
+      { rank: 3, title: 'Show HN: We Built an Open Source Alternative to Datadog', domain: 'github.com/signoz', words: 10, points: '1,120', comments: 591 },
+      { rank: 4, title: 'A Deep Dive into Linux Kernel eBPF Observability Pipelines', domain: 'brendangregg.com', words: 9, points: '730', comments: 488 },
+      { rank: 5, title: 'Reverse Engineering Apple Silicon Neural Engine Microcode and Memory Layout', domain: 'worthdoingbadly.com', words: 9, points: '1,650', comments: 432 },
+      { rank: 6, title: 'Ask HN: What Boring Tech Has Served Your Startup Best Over 10 Years?', domain: 'news.ycombinator.com', words: 13, points: '890', comments: 415 },
+      { rank: 7, title: 'How Postgres Query Optimization Breaks Down on Multi-Terabyte Tables', domain: 'pganalyze.com', words: 9, points: '640', comments: 389 },
+      { rank: 8, title: 'Building High-Performance WASM Runtime Compilers from Scratch in Rust', domain: 'cliffle.com', words: 9, points: '512', comments: 321 },
+      { rank: 9, title: 'The Economics of Self-Hosting AI Inference vs Cloud API Endpoints', domain: 'semianalysis.com', words: 10, points: '780', comments: 298 },
+      { rank: 10, title: 'Understanding Memory Allocation Patterns and Garbage Collection in Modern V8', domain: 'v8.dev', words: 10, points: '445', comments: 246 },
+      { rank: 11, title: 'Why We Migrated from Kubernetes Back to Bare Metal Dedicated Servers', domain: '37signals.com', words: 11, points: '1,230', comments: 215 }
+    ];
+
+    const datasetFilterB = [
+      { rank: 1, title: 'Postgres 17 Released', domain: 'postgresql.org', words: 3, points: '1,840', comments: 192 },
+      { rank: 2, title: 'Show HN: FastKV', domain: 'github.com/fastkv', words: 3, points: '1,450', comments: 160 },
+      { rank: 3, title: 'Linux 6.14 Details', domain: 'kernel.org', words: 3, points: '1,280', comments: 94 },
+      { rank: 4, title: 'Zig 0.14.0', domain: 'ziglang.org', words: 2, points: '1,190', comments: 142 },
+      { rank: 5, title: 'Bun 1.2 Available', domain: 'bun.sh', words: 3, points: '1,050', comments: 188 },
+      { rank: 6, title: 'Git 2.48', domain: 'github.blog', words: 2, points: '980', comments: 75 },
+      { rank: 7, title: 'Deno 2.1', domain: 'deno.com', words: 2, points: '910', comments: 110 },
+      { rank: 8, title: 'Redis 8 GA', domain: 'redis.io', words: 3, points: '895', comments: 85 }
+    ];
+
+    let currentFilter = 'A';
+
+    function renderTable(data, filterKey) {
+      const tbody = document.getElementById('table-body');
+      tbody.innerHTML = '';
+
+      data.forEach((row, idx) => {
+        const tr = document.createElement('tr');
+        tr.className = 'transition-colors hover:bg-slate-50/80 group bg-white';
+        
+        tr.innerHTML = `
+          <td class="py-3.5 px-5 text-center font-mono text-xs text-slate-400 group-hover:text-slate-700 font-medium">
+            ${String(row.rank).padStart(2, '0')}
+          </td>
+          <td class="py-3.5 px-5 min-w-0">
+            <div class="flex flex-col sm:flex-row sm:items-baseline gap-x-2 gap-y-1">
+              <a href="#" class="text-sm font-semibold text-slate-900 hover:text-orange-600 transition-colors leading-snug">
+                ${row.title}
+              </a>
+              <span class="font-mono text-xs text-slate-500 flex items-center gap-1.5 shrink-0">
+                <span class="text-slate-400">(${row.domain})</span>
+                <span class="bg-slate-100 border border-slate-200/80 px-1.5 py-0.5 rounded text-[11px] text-slate-600 group-hover:bg-slate-200/70 group-hover:text-slate-800 transition-colors">${row.words}w</span>
+              </span>
+            </div>
+          </td>
+          <td class="py-3.5 px-5 text-right font-mono text-sm">
+            <span class="inline-flex items-center gap-1 text-slate-700 font-semibold">
+              <span class="material-symbols-outlined text-[15px] text-orange-600 font-bold">arrow_drop_up</span>
+              ${row.points}
+            </span>
+          </td>
+          <td class="py-3.5 px-5 text-right font-mono text-sm">
+            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-slate-100 group-hover:bg-orange-50 group-hover:text-orange-700 border border-slate-200/70 text-slate-700 font-medium transition-colors">
+              <span class="material-symbols-outlined text-[14px] text-sky-600 group-hover:text-orange-600 transition-colors">chat_bubble</span>
+              ${row.comments}
+            </span>
+          </td>
+        `;
+        tbody.appendChild(tr);
+      });
+
+      const footerCount = document.getElementById('footer-count');
+      const footerPayload = document.getElementById('footer-payload');
+      if (filterKey === 'A') {
+        footerCount.textContent = `Showing ${data.length} entries matching Filter A (>5 words, sorted comments desc)`;
+        footerPayload.textContent = 'Response payload: 4.8 KB';
+      } else {
+        footerCount.textContent = `Showing ${data.length} entries matching Filter B (≤5 words, sorted points desc)`;
+        footerPayload.textContent = 'Response payload: 3.2 KB';
+      }
+    }
+
+    function switchFilter(type) {
+      currentFilter = type;
+      const cardA = document.getElementById('card-filter-a');
+      const cardB = document.getElementById('card-filter-b');
+      const tagA = document.getElementById('tag-filter-a');
+      const tagB = document.getElementById('tag-filter-b');
+      const ruleBadgeText = document.getElementById('rule-badge-text');
+
+      if (type === 'A') {
+        cardA.className = 'relative flex items-start gap-3.5 p-4 rounded-lg cursor-pointer transition-all bg-orange-50/50 text-slate-900 ring-2 ring-orange-500 border border-orange-200 shadow-xs';
+        cardB.className = 'relative flex items-start gap-3.5 p-4 rounded-lg cursor-pointer transition-all bg-white text-slate-600 hover:text-slate-900 border border-slate-200 hover:border-slate-300 shadow-xs';
+        tagA.classList.remove('hidden');
+        tagB.classList.add('hidden');
+        document.querySelector('input[value="A"]').checked = true;
+        ruleBadgeText.textContent = 'Rule: title.word_count > 5 | sort: comments:desc';
+        renderTable(datasetFilterA, 'A');
+      } else {
+        cardB.className = 'relative flex items-start gap-3.5 p-4 rounded-lg cursor-pointer transition-all bg-orange-50/50 text-slate-900 ring-2 ring-orange-500 border border-orange-200 shadow-xs';
+        cardA.className = 'relative flex items-start gap-3.5 p-4 rounded-lg cursor-pointer transition-all bg-white text-slate-600 hover:text-slate-900 border border-slate-200 hover:border-slate-300 shadow-xs';
+        tagB.classList.remove('hidden');
+        tagA.classList.add('hidden');
+        document.querySelector('input[value="B"]').checked = true;
+        ruleBadgeText.textContent = 'Rule: title.word_count <= 5 | sort: points:desc';
+        renderTable(datasetFilterB, 'B');
+      }
+    }
+
+    function triggerQueryPulse() {
+      const btn = document.getElementById('run-query-btn');
+      const originalText = btn.innerHTML;
+      btn.innerHTML = `
+        <span class="material-symbols-outlined text-[18px] animate-spin">refresh</span>
+        <span>Querying...</span>
+      `;
+      btn.style.pointerEvents = 'none';
+
+      setTimeout(() => {
+        btn.innerHTML = originalText;
+        btn.style.pointerEvents = 'auto';
+        if (currentFilter === 'A') {
+          renderTable(datasetFilterA, 'A');
+        } else {
+          renderTable(datasetFilterB, 'B');
+        }
+      }, 250);
+    }
+
+    function resetDefaults() {
+      switchFilter('A');
+    }
+
+    // Keyboard shortcut: Press Enter to execute query
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' && !['TEXTAREA', 'INPUT'].includes(document.activeElement.tagName)) {
+        triggerQueryPulse();
+      }
+    });
+
+    // Initial render
+    renderTable(datasetFilterA, 'A');
+  </script>
+</body></html>

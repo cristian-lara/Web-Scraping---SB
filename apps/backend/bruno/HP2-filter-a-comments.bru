@@ -1,0 +1,56 @@
+meta {
+  name: HP2 GET Filter A comments
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{baseUrl}}/filters?filter=MORE_THAN_5_WORDS_COMMENTS
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{accessToken}}
+}
+
+tests {
+  test("HP2 authenticated Filter A accepted", function () {
+    expect(res.getStatus()).to.equal(200);
+  });
+
+  test("HP2 Filter A contract: countWords(title) > FILTER_WORD_THRESHOLD, comments DESC, rank ASC ties", function () {
+    const FILTER_WORD_THRESHOLD = 5;
+    const SYMBOL_ONLY_TOKEN = /^[^a-zA-Z0-9]+$/;
+    function countWords(title) {
+      const trimmed = String(title).trim();
+      if (trimmed.length === 0) {
+        return 0;
+      }
+      return trimmed.split(/\s+/).filter(function (token) {
+        return !SYMBOL_ONLY_TOKEN.test(token);
+      }).length;
+    }
+
+    const items = res.getBody();
+    expect(items).to.be.an("array");
+    for (let i = 0; i < items.length; i += 1) {
+      const item = items[i];
+      expect(item).to.include.keys("rank", "title", "points", "comments");
+      expect(countWords(item.title)).to.be.greaterThan(FILTER_WORD_THRESHOLD);
+      if (i > 0) {
+        const prev = items[i - 1];
+        if (prev.comments === item.comments) {
+          expect(prev.rank).to.be.at.most(item.rank);
+        } else {
+          expect(prev.comments).to.be.at.least(item.comments);
+        }
+      }
+    }
+  });
+}
+
+docs {
+  Happy Path 2 (HP-BR2): Filter A MORE_THAN_5_WORDS_COMMENTS. Requires HP1 JWT.
+  Empty array is valid if live HN has no titles with countWords > 5.
+}

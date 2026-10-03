@@ -1,0 +1,47 @@
+# WAVE1 verify evidence
+# Repo: E:\desafios\Web-Scraping---SB
+# Date: 2026-10-02
+
+## 1. pnpm --filter @repo/shared-types test
+exit: 0
+summary: 3 test files, 18 tests passed (hello, count-words, schemas). Duration ~849ms.
+tail:
+```
+ ✓ src/hello.test.ts (1 test) 3ms
+ ✓ src/count-words.test.ts (8 tests) 6ms
+ ✓ src/schemas.test.ts (9 tests) 16ms
+
+ Test Files  3 passed (3)
+      Tests  18 passed (18)
+   Start at  23:53:21
+   Duration  849ms (transform 175ms, setup 0ms, collect 380ms, tests 24ms, environment 1ms, prepare 840ms)
+EXIT_SHARED_TYPES=0
+```
+
+## 2. pnpm --filter @repo/backend test
+exit: 0
+summary: 2 test files, 11 tests passed (apply-filter, cheerio-scraper.adapter). Duration ~1.11s.
+tail:
+```
+ ✓ src/filtering/apply-filter.test.ts (6 tests) 4ms
+ ✓ src/scraping/cheerio-scraper.adapter.test.ts (5 tests) 76ms
+
+ Test Files  2 passed (2)
+      Tests  11 passed (11)
+   Start at  23:53:33
+   Duration  1.11s (transform 133ms, setup 0ms, collect 774ms, tests 81ms, environment 0ms, prepare 388ms)
+EXIT_BACKEND=0
+```
+
+## 3. openspec validate add-mvp-product-vertical --strict
+exit: 0
+summary: Change 'add-mvp-product-vertical' is valid.
+tail:
+```
+Change 'add-mvp-product-vertical' is valid
+EXIT_OPENSPEC=0
+```
+
+## Verdict
+WAVE1_TESTS_OK
+(all three commands exit 0)
