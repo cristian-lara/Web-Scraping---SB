@@ -16,3 +16,11 @@ export const FILTERS_ROUTE_PREFIX = "filters";
 export const SWAGGER_PATH = "api";
 export const SWAGGER_TITLE = "HN Scraper BFF";
 export const SWAGGER_VERSION = "0.0.1";
+
+/** Inbound/outbound correlation header (F3-1). */
+export const REQUEST_ID_HEADER = "x-request-id";
+
+export const LOG_STAGE_AUTH = "auth.guard";
+export const LOG_STAGE_SCRAPE = "scrape";
+export const LOG_STAGE_FILTER = "filter";
+export const LOG_STAGE_PERSIST = "persist";

@@ -1,0 +1,57 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches:
+      - develop
+      - main
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - name: Install
+        run: pnpm install --frozen-lockfile
+
+      - name: Vitest
+        run: pnpm test
+
+      - name: Lint
+        run: pnpm lint
+
+      - name: Start live backend and Bruno E2E
+        env:
+          SENTRY_DSN: ""
+          JWT_SECRET: dev-only-change-me
+          DEMO_USER_EMAIL: demo@example.com
+          DEMO_USER_PASSWORD: demo-password-change-me
+        run: |
+          if [ ! -f apps/backend/.env ]; then
+            cp apps/backend/.env.example apps/backend/.env
+          fi
+          pnpm --filter @repo/backend prisma:generate
+          pnpm --filter @repo/backend prisma:migrate
+          pnpm --filter @repo/backend start &
+          ready=0
+          for _ in $(seq 1 60); do
+            if curl -sf http://localhost:3000/api-json >/dev/null; then
+              ready=1
+              break
+            fi
+            sleep 1
+          done
+          if [ "$ready" -ne 1 ]; then
+            echo "backend did not listen on localhost:3000"
+            exit 1
+          fi
+          npx @usebruno/cli run apps/backend/bruno --env local

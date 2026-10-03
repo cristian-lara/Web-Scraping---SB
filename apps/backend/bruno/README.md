@@ -1,6 +1,6 @@
 # Bruno collection (local BFF)
 
-Plain-text `.bru` requests for the live Nest BFF. No GitHub Actions / Makefile E2E (F3).
+Plain-text `.bru` requests for the live Nest BFF. CLI-runnable for local and CI (`make test-e2e` / GitHub Actions).
 
 ## Nest first
 
@@ -18,7 +18,7 @@ BFF: `http://localhost:3000`. Demo user: `DEMO_USER_EMAIL` / `DEMO_USER_PASSWORD
 
 GUI: open `apps/backend/bruno/` in Bruno, select environment `local`, run HP1 before HP2/HP3/E2. Run E3 last.
 
-CLI (collection stays CLI-shaped for later F3):
+CLI:
 
 ```bash
 npx @usebruno/cli run apps/backend/bruno --env local
