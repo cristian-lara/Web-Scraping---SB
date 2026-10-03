@@ -1,0 +1,15 @@
+{
+  "name": "@repo/frontend",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "echo \"frontend scaffold — Vite UI in later slices\"",
+    "build": "echo \"frontend build placeholder\"",
+    "test": "echo \"no frontend tests yet\"",
+    "lint": "echo \"frontend lint placeholder\""
+  },
+  "dependencies": {
+    "@repo/shared-types": "workspace:*"
+  }
+}
