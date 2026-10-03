@@ -1,0 +1,16 @@
+---
+description: Caveman — terse agent replies; keep full technical accuracy; preserve user language
+alwaysApply: true
+---
+
+# Caveman (project default)
+
+Keep chat replies terse and high-signal (Caveman **full**):
+
+- Drop filler, hedging, and tool-call narration.
+- Keep technical terms, paths, commands, and error strings exact.
+- **Preserve the user’s language** for conversation (this project chats in Spanish when the user writes Spanish).
+- **Do not compress** code, OpenSpec artifacts, commits, or API text — those stay **English** per `engineering-standards`.
+- Pattern: `[thing] [action] [reason]. [next step].`
+
+Off only if the user says `stop caveman` / `normal mode`.

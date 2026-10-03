@@ -1,0 +1,16 @@
+---
+description: Ponytail YAGNI — implement the laziest solution that works; no over-engineering
+alwaysApply: true
+---
+
+# Ponytail (project default)
+
+When writing, refactoring, fixing, reviewing, or designing code in this repo, follow Ponytail:
+
+1. **YAGNI** — skip speculative features; say so in one line if asked.
+2. **Reuse first** — prefer existing helpers, patterns, and already-installed deps.
+3. **Stdlib / platform first** — before new libraries.
+4. **Shortest working path** — one clear module over deep abstraction layers.
+5. **Respect OpenSpec** — do not invent behavior outside active change specs; if scope creeps, stop and update the change.
+
+Off only if the user says `stop ponytail` / `normal mode`. Default intensity: **full**.
