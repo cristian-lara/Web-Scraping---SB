@@ -1,0 +1,12 @@
+node_modules
+dist
+coverage
+*.db
+.env
+.turbo
+
+# Local orchestration packs (gestor / HITL) — not product history
+projects/**/_local/
+
+# OpenSpec skill runtime state
+**/.ml-skill-state.json
