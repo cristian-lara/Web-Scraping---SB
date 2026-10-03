@@ -31,7 +31,7 @@ Each story â†’ one OpenSpec change: `/opsx-propose <kebab-name>` â†’ a
 |----|---------------|--------|--------|
 | F1-1 | Shared Zod Entry / FilterQuery / UsageLog | `add-shared-domain-types` | archived 2026-10-02 |
 | F1-2 | `countWords` TDD + named threshold | `add-count-words` | archived 2026-10-02 |
-| F1-3 | Cheerio scraper + fixture top 30 offline | `add-hn-scraper-fixture` | pending |
+| F1-3 | Cheerio scraper + fixture top 30 offline | `add-hn-scraper-fixture` | archived 2026-10-02 |
 
 Order: F1-1 â†’ F1-2 (parallel ok) â†’ F1-3. Details in F1 file.
 
