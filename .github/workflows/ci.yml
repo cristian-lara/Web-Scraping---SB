@@ -60,4 +60,5 @@ jobs:
             exit 1
           fi
           # Bruno CLI must run with cwd at the collection root (bruno.json).
-          (cd apps/backend/bruno && bru run --env local --env-var throttleLimit=5)
+          # pnpm run puts node_modules/.bin on PATH (bare `bru` in a subshell does not).
+          pnpm run test:e2e -- --env-var throttleLimit=5
