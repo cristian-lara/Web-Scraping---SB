@@ -9,10 +9,26 @@ datasource db {
 
 /// Usage metrics for a successful authenticated filter run (UsageLogSchema).
 model UsageLog {
-  id                String   @id
-  timestamp         DateTime
-  filter_applied    String
-  processed_items   Int
-  execution_time_ms Int
-  userId            String
+  id                  String   @id
+  timestamp           DateTime
+  filter_applied      String
+  processed_items     Int
+  execution_time_ms   Int
+  userId              String
+  requestId           String
+  scrape_duration_ms  Int
+}
+
+/// Explicit user-saved filtered entry snapshot (SavedFilterResultSchema).
+model SavedFilterResult {
+  id             String   @id
+  savedAt        DateTime
+  userId         String
+  filter_applied String
+  /// JSON-serialized Entry[]
+  entries        String
+  entryCount     Int
+  label          String?
+
+  @@index([userId, savedAt])
 }

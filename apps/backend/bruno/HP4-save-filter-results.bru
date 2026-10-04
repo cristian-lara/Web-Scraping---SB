@@ -1,0 +1,53 @@
+meta {
+  name: HP4 POST save filter results
+  type: http
+  seq: 4
+}
+
+post {
+  url: {{baseUrl}}/results/saved
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{accessToken}}
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "filter_applied": "MORE_THAN_5_WORDS_COMMENTS",
+    "entries": [
+      {
+        "rank": 1,
+        "title": "one two three four five six",
+        "points": 10,
+        "comments": 3
+      }
+    ],
+    "label": "bruno-hp4"
+  }
+}
+
+tests {
+  test("HP4 save succeeds", function () {
+    const status = res.getStatus();
+    expect([200, 201]).to.include(status);
+  });
+
+  test("HP4 response has id and entryCount", function () {
+    const body = res.getBody();
+    expect(body).to.be.an("object");
+    expect(body.id).to.be.a("string");
+    expect(body.id.length).to.be.greaterThan(0);
+    expect(body.entryCount).to.equal(1);
+  });
+}
+
+docs {
+  Happy Path save (HP-BR-SAVE): authenticated POST /results/saved with fixture entries (no live HN required).
+}

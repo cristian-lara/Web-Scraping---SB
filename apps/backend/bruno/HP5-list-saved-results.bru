@@ -1,0 +1,33 @@
+meta {
+  name: HP5 GET list saved filter results
+  type: http
+  seq: 5
+}
+
+get {
+  url: {{baseUrl}}/results/saved
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{accessToken}}
+}
+
+tests {
+  test("HP5 list succeeds", function () {
+    expect(res.getStatus()).to.equal(200);
+  });
+
+  test("HP5 list has at least one item with required fields", function () {
+    const items = res.getBody();
+    expect(items).to.be.an("array");
+    expect(items.length).to.be.greaterThan(0);
+    const item = items[0];
+    expect(item).to.include.keys("id", "savedAt", "filter_applied", "entryCount");
+  });
+}
+
+docs {
+  Happy Path list (HP-BR-LIST): authenticated GET /results/saved after HP4 save.
+}

@@ -25,11 +25,15 @@ describe("PrismaUsageRepository (offline SQLite)", () => {
       processed_items: 3,
       execution_time_ms: 12,
       userId: "jwt-user-offline",
+      requestId: "req-offline-1",
+      scrape_duration_ms: 45,
     });
 
     expect(UsageLogSchema.parse(created).userId).toBe("jwt-user-offline");
     expect(created.filter_applied).toBe(FILTER_MORE_THAN_5_WORDS_COMMENTS);
     expect(created.timestamp).toBe("2026-10-03T05:00:00.000Z");
+    expect(created.requestId).toBe("req-offline-1");
+    expect(created.scrape_duration_ms).toBe(45);
 
     const read = await repo.findById(String(created.id));
     expect(read).toEqual(created);
@@ -45,6 +49,8 @@ describe("PrismaUsageRepository (offline SQLite)", () => {
         processed_items: 1,
         execution_time_ms: 1,
         userId: "jwt-user-offline",
+        requestId: "req-bad",
+        scrape_duration_ms: 1,
       }),
     ).rejects.toThrow();
 

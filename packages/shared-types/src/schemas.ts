@@ -37,6 +37,26 @@ export const UsageLogSchema = z.object({
   processed_items: z.number().int(),
   execution_time_ms: z.number().int(),
   userId: z.string(),
+  requestId: z.string().min(1),
+  scrape_duration_ms: z.number().int().nonnegative(),
+});
+
+/** Persisted saved filter snapshot (full read shape). */
+export const SavedFilterResultSchema = z.object({
+  id: z.string().min(1),
+  savedAt: z.iso.datetime(),
+  userId: z.string().min(1),
+  filter_applied: FilterAppliedSchema,
+  entries: z.array(EntrySchema),
+  entryCount: z.number().int().nonnegative(),
+  label: z.string().min(1).optional(),
+});
+
+/** Client create body: server assigns id, savedAt, userId, entryCount. */
+export const SavedFilterResultCreateSchema = z.object({
+  filter_applied: FilterAppliedSchema,
+  entries: z.array(EntrySchema),
+  label: z.string().min(1).optional(),
 });
 
 export type Entry = z.infer<typeof EntrySchema>;
@@ -44,3 +64,7 @@ export type FilterApplied = z.infer<typeof FilterAppliedSchema>;
 export type FilterQuery = z.infer<typeof FilterQuerySchema>;
 export type LoginBody = z.infer<typeof LoginBodySchema>;
 export type UsageLog = z.infer<typeof UsageLogSchema>;
+export type SavedFilterResult = z.infer<typeof SavedFilterResultSchema>;
+export type SavedFilterResultCreate = z.infer<
+  typeof SavedFilterResultCreateSchema
+>;

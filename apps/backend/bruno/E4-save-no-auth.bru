@@ -1,0 +1,39 @@
+meta {
+  name: E4 POST save without auth
+  type: http
+  seq: 8
+}
+
+post {
+  url: {{baseUrl}}/results/saved
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "filter_applied": "MORE_THAN_5_WORDS_COMMENTS",
+    "entries": [
+      {
+        "rank": 1,
+        "title": "one two three four five six",
+        "points": 10,
+        "comments": 3
+      }
+    ]
+  }
+}
+
+tests {
+  test("E4 save without Bearer returns 401", function () {
+    expect(res.getStatus()).to.equal(401);
+  });
+}
+
+docs {
+  Edge Case save without auth (EC-BR-SAVE-401): POST /results/saved with no Authorization expects 401.
+}

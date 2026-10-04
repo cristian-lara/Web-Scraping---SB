@@ -11,6 +11,7 @@ export const HTTP_STATUS_INTERNAL_SERVER_ERROR =
 export const AUTH_ROUTE_PREFIX = "auth";
 export const AUTH_LOGIN_ROUTE = "login";
 export const FILTERS_ROUTE_PREFIX = "filters";
+export const SAVED_RESULTS_ROUTE_PREFIX = "results/saved";
 
 /** Swagger UI path; OpenAPI JSON at `/{SWAGGER_PATH}-json`. */
 export const SWAGGER_PATH = "api";

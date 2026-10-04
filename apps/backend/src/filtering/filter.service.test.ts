@@ -3,6 +3,7 @@ import {
   type Entry,
 } from "@repo/shared-types";
 import { describe, expect, it, vi } from "vitest";
+import { requestContext } from "../common/request-context.js";
 import { HnScrapeFailedException } from "../scraping/hn-scrape.exception.js";
 import { FilterService } from "./filter.service.js";
 
@@ -23,9 +24,8 @@ describe("FilterService UsageLog (offline, mock scraper)", () => {
       { create } as never,
     );
 
-    const result = await service.run(
-      { filter: FILTER_MORE_THAN_5_WORDS_COMMENTS },
-      "demo-user-1",
+    const result = await requestContext.run({ requestId: "corr-test-1" }, () =>
+      service.run({ filter: FILTER_MORE_THAN_5_WORDS_COMMENTS }, "demo-user-1"),
     );
 
     expect(result).toHaveLength(1);
@@ -36,6 +36,10 @@ describe("FilterService UsageLog (offline, mock scraper)", () => {
     expect(payload.processed_items).toBe(1);
     expect(typeof payload.execution_time_ms).toBe("number");
     expect(payload.timestamp).toMatch(/^\d{4}-\d{2}-\d{2}T/);
+    expect(payload.requestId).toBe("corr-test-1");
+    expect(typeof payload.scrape_duration_ms).toBe("number");
+    expect(payload.scrape_duration_ms).toBeGreaterThanOrEqual(0);
+    expect(payload).not.toHaveProperty("entries");
   });
 
   it("does not invent a UsageLog when scrape fails", async () => {
@@ -50,9 +54,11 @@ describe("FilterService UsageLog (offline, mock scraper)", () => {
     );
 
     await expect(
-      service.run(
-        { filter: FILTER_MORE_THAN_5_WORDS_COMMENTS },
-        "demo-user-1",
+      requestContext.run({ requestId: "corr-fail" }, () =>
+        service.run(
+          { filter: FILTER_MORE_THAN_5_WORDS_COMMENTS },
+          "demo-user-1",
+        ),
       ),
     ).rejects.toBeInstanceOf(HnScrapeFailedException);
 

@@ -133,6 +133,8 @@ describe("Correlation + structured logs (offline)", () => {
     );
     expect(usage?.id).toBeTruthy();
     expect(usage?.id).not.toBe(requestId);
+    expect(usage?.requestId).toBe(requestId);
+    expect(typeof usage?.scrape_duration_ms).toBe("number");
   });
 
   it("HP-CORR-IN: echoes inbound x-request-id", async () => {

@@ -11,7 +11,7 @@
     "test": "turbo run test",
     "lint": "turbo run lint",
     "test:e2e": "cd apps/backend/bruno && bru run --env local",
-    "test:e2e:ci": "cd apps/backend/bruno && bru run HP1-auth-login.bru HP2-filter-a-comments.bru HP3-filter-b-points.bru E1-filters-no-auth.bru E2-invalid-filter.bru --env local",
+    "test:e2e:ci": "cd apps/backend/bruno && bru run HP1-auth-login.bru HP2-filter-a-comments.bru HP3-filter-b-points.bru HP4-save-filter-results.bru HP5-list-saved-results.bru E1-filters-no-auth.bru E2-invalid-filter.bru E4-save-no-auth.bru --env local",
     "test:coverage": "pnpm --filter @repo/shared-types test:coverage && pnpm --filter @repo/backend test:coverage",
     "format": "prettier --write \"**/*.{ts,tsx,js,json,md}\""
   },
