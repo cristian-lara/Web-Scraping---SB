@@ -40,6 +40,7 @@ tests {
 
     const items = res.getBody();
     expect(items).to.be.an("array");
+    expect(items.length).to.be.greaterThan(0);
     for (let i = 0; i < items.length; i += 1) {
       const item = items[i];
       expect(item).to.include.keys("rank", "title", "points", "comments");
@@ -58,5 +59,7 @@ tests {
 
 docs {
   Happy Path 2 (HP-BR2): Filter A MORE_THAN_5_WORDS_COMMENTS. Requires HP1 JWT.
-  Empty array is valid if live HN has no titles with countWords > 5.
+  Happy-path evidence requires a non-empty array (empty [] fails this HP).
+  For CI/local reliability set E2E_SCRAPE_FIXTURE=1 on the Nest process (offline hn_sample.html).
+  Product API may still return [] when there are no matches (EC-EMPTY); that is not HP-BR2 proof.
 }

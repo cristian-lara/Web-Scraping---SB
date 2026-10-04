@@ -26,19 +26,37 @@ jobs:
       - name: Vitest
         run: pnpm test
 
+      - name: CORE coverage (shared-types + backend scrape/filter)
+        run: pnpm test:coverage
+
+      - name: Upload CORE coverage HTML/LCOV
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: core-coverage
+          path: |
+            packages/shared-types/coverage/
+            apps/backend/coverage/
+          if-no-files-found: warn
+
       - name: Lint
         run: pnpm lint
 
-      - name: Start live backend and Bruno E2E
+      - name: Start backend (fixture scrape) and Bruno E2E
         env:
           SENTRY_DSN: ""
           JWT_SECRET: dev-only-change-me
           DEMO_USER_EMAIL: demo@example.com
           DEMO_USER_PASSWORD: demo-password-change-me
+          # Non-vacuous HP2/HP3: offline hn_sample.html (not live HN)
+          E2E_SCRAPE_FIXTURE: "1"
         run: |
           if [ ! -f apps/backend/.env ]; then
             cp apps/backend/.env.example apps/backend/.env
           fi
+          # Ensure Nest start sees fixture flag even if .env was copied without it
+          grep -q '^E2E_SCRAPE_FIXTURE=' apps/backend/.env \
+            || echo 'E2E_SCRAPE_FIXTURE=1' >> apps/backend/.env
           pnpm --filter @repo/backend prisma:generate
           pnpm --filter @repo/backend prisma:migrate
           pnpm --filter @repo/backend start &
@@ -56,5 +74,5 @@ jobs:
           fi
           # Collection root via pnpm (PATH). Skip E3 in CI: bru pre-request burn
           # returns 500 instead of 429 under Actions; EC-429 covered by Vitest
-          # (auth.http.test.ts). Live scrape proven by HP2/HP3.
+          # (auth.http.test.ts). HP2/HP3 use fixture scrape (E2E_SCRAPE_FIXTURE=1).
           pnpm run test:e2e:ci

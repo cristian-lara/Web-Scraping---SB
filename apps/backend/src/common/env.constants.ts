@@ -8,7 +8,16 @@ export const DEFAULT_THROTTLE_LIMIT = 100;
 export const DEFAULT_HN_LIST_URL = "https://news.ycombinator.com/";
 export const BCRYPT_SALT_ROUNDS = 10;
 
+/** When `1` or `true`, HN HTML comes from the offline fixture (CI/Bruno). */
+export const E2E_SCRAPE_FIXTURE_ENV = "E2E_SCRAPE_FIXTURE";
+
 /** Read at call time so Nest factories see post-dotenv values. */
 export function resolveJwtSecret(): string {
   return process.env.JWT_SECRET ?? DEFAULT_JWT_SECRET;
+}
+
+/** Opt-in fixture scrape for non-vacuous Bruno; default remains live Axios. */
+export function isE2eScrapeFixtureEnabled(): boolean {
+  const value = process.env[E2E_SCRAPE_FIXTURE_ENV];
+  return value === "1" || value === "true";
 }
