@@ -11,6 +11,12 @@ export const BCRYPT_SALT_ROUNDS = 10;
 /** When `1` or `true`, HN HTML comes from the offline fixture (CI/Bruno). */
 export const E2E_SCRAPE_FIXTURE_ENV = "E2E_SCRAPE_FIXTURE";
 
+export const HN_FETCH_CACHE_TTL_MS_ENV = "HN_FETCH_CACHE_TTL_MS";
+export const HN_FETCH_MIN_INTERVAL_MS_ENV = "HN_FETCH_MIN_INTERVAL_MS";
+export const DEFAULT_HN_FETCH_CACHE_TTL_MS = 30_000;
+export const DEFAULT_HN_FETCH_MIN_INTERVAL_MS = 2_000;
+export const HN_FETCH_MAX_LIVE_RETRIES = 1;
+
 /** Read at call time so Nest factories see post-dotenv values. */
 export function resolveJwtSecret(): string {
   return process.env.JWT_SECRET ?? DEFAULT_JWT_SECRET;
@@ -20,4 +26,27 @@ export function resolveJwtSecret(): string {
 export function isE2eScrapeFixtureEnabled(): boolean {
   const value = process.env[E2E_SCRAPE_FIXTURE_ENV];
   return value === "1" || value === "true";
+}
+
+function readNonNegativeMs(envName: string, fallback: number): number {
+  const raw = process.env[envName];
+  if (raw === undefined || raw === "") {
+    return fallback;
+  }
+  const parsed = Number(raw);
+  return Number.isFinite(parsed) && parsed >= 0 ? parsed : fallback;
+}
+
+export function resolveHnFetchCacheTtlMs(): number {
+  return readNonNegativeMs(
+    HN_FETCH_CACHE_TTL_MS_ENV,
+    DEFAULT_HN_FETCH_CACHE_TTL_MS,
+  );
+}
+
+export function resolveHnFetchMinIntervalMs(): number {
+  return readNonNegativeMs(
+    HN_FETCH_MIN_INTERVAL_MS_ENV,
+    DEFAULT_HN_FETCH_MIN_INTERVAL_MS,
+  );
 }

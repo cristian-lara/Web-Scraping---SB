@@ -1,13 +1,13 @@
-import { trace } from "@opentelemetry/api";
+import { context, trace } from "@opentelemetry/api";
 import { OTLPTraceExporter } from "@opentelemetry/exporter-trace-otlp-http";
 import { resourceFromAttributes } from "@opentelemetry/resources";
 import {
-  BasicTracerProvider,
   BatchSpanProcessor,
   InMemorySpanExporter,
   SimpleSpanProcessor,
   type SpanProcessor,
 } from "@opentelemetry/sdk-trace-base";
+import { NodeTracerProvider } from "@opentelemetry/sdk-trace-node";
 import {
   ATTR_REQUEST_ID,
   ENV_OTEL_EXPORTER_OTLP_ENDPOINT,
@@ -17,7 +17,7 @@ import {
 } from "./otel.constants.js";
 import { getRequestId } from "./request-context.js";
 
-let provider: BasicTracerProvider | undefined;
+let provider: NodeTracerProvider | undefined;
 let testExporter: InMemorySpanExporter | undefined;
 
 function otlpTracesUrl(endpoint: string): string {
@@ -56,14 +56,15 @@ export function initOtelIfConfigured(): void {
     );
   }
 
-  const next = new BasicTracerProvider({
+  // NodeTracerProvider registers async context so getActiveSpan() works in await chains.
+  const next = new NodeTracerProvider({
     resource: resourceFromAttributes({
       "service.name": OTEL_SERVICE_NAME,
     }),
     spanProcessors: processors,
   });
 
-  trace.setGlobalTracerProvider(next);
+  next.register();
   provider = next;
 }
 
@@ -80,6 +81,7 @@ export async function resetOtelForTests(): Promise<void> {
   }
   // Restore no-op global so later initOtelIfConfigured can re-register.
   trace.disable();
+  context.disable();
 }
 
 export async function withSpan<T>(

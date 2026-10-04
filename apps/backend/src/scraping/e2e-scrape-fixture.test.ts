@@ -4,6 +4,8 @@ import axios from "axios";
 import { Test } from "@nestjs/testing";
 import { E2E_SCRAPE_FIXTURE_ENV } from "../common/env.constants.js";
 import { HN_TOP_ENTRY_LIMIT } from "./cheerio-scraper.adapter.js";
+import { HN_HTML_FETCHER } from "./hn-html.fetcher.js";
+import { PoliteHnHtmlFetcher } from "./polite-hn-html.fetcher.js";
 import { ScrapingModule } from "./scraping.module.js";
 import { ScrapingService } from "./scraping.service.js";
 
@@ -57,8 +59,10 @@ describe("E2E_SCRAPE_FIXTURE scrape path", () => {
     }).compile();
 
     const scraping = moduleRef.get(ScrapingService);
+    const fetcher = moduleRef.get(HN_HTML_FETCHER);
     const entries = await scraping.scrapeLive();
 
+    expect(fetcher).toBeInstanceOf(PoliteHnHtmlFetcher);
     expect(axios.get).toHaveBeenCalledOnce();
     expect(entries).toHaveLength(1);
     expect(entries[0]?.title).toBe("Only live");

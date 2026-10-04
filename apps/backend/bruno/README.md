@@ -16,7 +16,7 @@ BFF: `http://localhost:3000`. Demo user: `DEMO_USER_EMAIL` / `DEMO_USER_PASSWORD
 
 ## Fixture scrape (CI / non-vacuous HP2–HP3)
 
-HP2 and HP3 **require a non-empty** filtered array (empty `[]` fails those happy paths). CI sets `E2E_SCRAPE_FIXTURE=1` on the Nest process so scrape uses offline `hn_sample.html` (mixed long/short titles) instead of live Hacker News.
+HP2 and HP3 **require a non-empty** filtered array (empty `[]` fails those happy paths). CI sets `E2E_SCRAPE_FIXTURE=1` on the Nest process so scrape uses offline `hn_sample.html` (mixed long/short titles) instead of live Hacker News. Fixture path **does not** use the polite live-fetch wrapper (no cache/interval/retry against HN).
 
 Local equivalent:
 
@@ -28,6 +28,19 @@ pnpm --filter @repo/backend dev
 ```
 
 Unset / omit the flag for live HN (local demo). Live HN may return empty Filter A or B depending on titles — that is valid API EC-EMPTY but not Bruno happy-path evidence.
+
+Live Axios scrape is wrapped by an in-process polite policy: HTML cache TTL default `30000` ms (`HN_FETCH_CACHE_TTL_MS`) and a minimum interval default `2000` ms between upstream GETs (`HN_FETCH_MIN_INTERVAL_MS`). Rapid Filter clicks in the same TTL window reuse cached HTML (one live GET). CI fixture env stays offline.
+
+### Grafana / Tempo (demo cache vs live)
+
+With Compose obs stack (`OTEL_EXPORTER_OTLP_ENDPOINT` set), each Filter’s `scrape.live` span includes:
+
+- `hn.fetch.outcome` — `cache` | `live` | `retry`
+- `hn.fetch.wait_ms` — present when the min-interval sleep ran
+
+Demo (live scrape, **do not** set `E2E_SCRAPE_FIXTURE`): open Grafana → **BFF request list**, run Filter twice within ~30s, then TraceQL  
+`{ resource.service.name = "hn-scraper-bff" && name = "scrape.live" && hn.fetch.outcome = "cache" }`  
+for the second request. Fixture/CI path stays offline and does not invent live-upstream outcomes.
 
 ## Run Bruno
 

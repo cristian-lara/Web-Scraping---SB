@@ -35,7 +35,7 @@
       "transparent": true,
       "options": {
         "mode": "markdown",
-        "content": "# Backend health (local)\nGenerate traffic in the UI (**Filter A/B**) or run `pnpm test:e2e:ci`. Numbers below are OpenTelemetry span durations from Tempo — not HTTP status codes."
+        "content": "# Backend health (local)\nGenerate traffic in the UI (**Filter A/B**) or run `pnpm test:e2e:ci`. Numbers below are OpenTelemetry span durations from Tempo — not HTTP status codes.\n\nPolite HN fetch: `scrape.live` carries `hn.fetch.outcome` = `cache` | `live` | `retry` (see **Request list** dashboard TraceQL). Two Filters within the cache TTL (live scrape, not `E2E_SCRAPE_FIXTURE`) → second request should show `cache`."
       }
     },
     {

@@ -33,7 +33,7 @@
       "gridPos": { "h": 4, "w": 24, "x": 0, "y": 0 },
       "options": {
         "mode": "markdown",
-        "content": "Recent OpenTelemetry spans from `hn-scraper-bff` (Tempo).\n\n- **scrape.live** — HN fetch + parse duration\n- **filter.run** — filter strategy duration\n- **usageLog.write** — SQLite UsageLog write\n\nCorrelate with JSON logs: `docker compose logs backend` and header `x-request-id` / span attribute `request.id`.\n\nGenerate traffic: UI Filter A/B or `pnpm test:e2e:ci`."
+        "content": "Recent OpenTelemetry spans from `hn-scraper-bff` (Tempo).\n\n- **scrape.live** — HN fetch + parse duration\n- **filter.run** — filter strategy duration\n- **usageLog.write** — SQLite UsageLog write\n\nPolite fetch outcomes on `scrape.live` (attribute `hn.fetch.outcome`):\n- `cache` — HTML from in-memory TTL cache\n- `live` — fresh upstream GET\n- `retry` — success after one timeout/5xx retry\n\nOptional: `hn.fetch.wait_ms` when the min-interval delay ran.\n\nTraceQL examples (Explore → Tempo):\n```\n{ resource.service.name = \"hn-scraper-bff\" && name = \"scrape.live\" && hn.fetch.outcome = \"cache\" }\n{ resource.service.name = \"hn-scraper-bff\" && name = \"scrape.live\" && hn.fetch.outcome = \"live\" }\n{ resource.service.name = \"hn-scraper-bff\" && name = \"scrape.live\" && hn.fetch.outcome = \"retry\" }\n```\n\nDemo: two Filters within ~30s (live env, **not** `E2E_SCRAPE_FIXTURE`) → second span should be `cache`.\n\nCorrelate with JSON logs: `docker compose logs backend` and header `x-request-id` / span attribute `request.id`.\n\nGenerate traffic: UI Filter A/B or `pnpm test:e2e:ci`."
       }
     },
     {
