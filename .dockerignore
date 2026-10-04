@@ -1,0 +1,14 @@
+**/node_modules
+**/.git
+**/dist
+**/coverage
+**/.turbo
+**/app.db
+**/app.db-journal
+openspec/changes/**/propose-audit
+**/*.md
+!README.md
+.env
+**/.env
+apps/backend/prisma/app.db
+apps/frontend/node_modules

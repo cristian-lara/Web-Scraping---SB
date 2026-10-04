@@ -7,6 +7,7 @@ auth {
 }
 
 docs {
-  Manual E2E against a live local Nest BFF. Run HP1 before HP2/HP3/E2 so `accessToken` is set.
-  E3 last: it spends the throttle window. CI runs this collection via `@usebruno/cli` (see `.github/workflows/ci.yml`).
+  Manual E2E against a live local Nest BFF. Run HP1 before HP2/HP3/HP4/HP5/E2 so `accessToken` is set.
+  HP4/HP5 save+list use fixture entries (no live HN). E3 last: it spends the throttle window.
+  CI runs a subset via `@usebruno/cli` with E2E_SCRAPE_FIXTURE=1 for HP2/HP3 (see `.github/workflows/ci.yml`).
 }
