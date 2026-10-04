@@ -32,6 +32,7 @@ const ENTRY: Entry = {
 };
 
 async function bootApp(): Promise<INestApplication> {
+  process.env.DEMO_USER_PASSWORD = TEST_DEMO_USER_PASSWORD;
   resetDemoUserStore();
   await bootstrapDemoUser();
 
