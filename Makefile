@@ -1,4 +1,4 @@
-.PHONY: install dev test test-e2e lint up down logs
+.PHONY: install dev test test-e2e test-coverage lint up down logs
 
 install:
 	pnpm install --frozen-lockfile
@@ -11,6 +11,9 @@ test:
 
 test-e2e:
 	pnpm test:e2e
+
+test-coverage:
+	pnpm test:coverage
 
 lint:
 	pnpm lint
