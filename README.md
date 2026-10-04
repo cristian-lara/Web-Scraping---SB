@@ -95,7 +95,11 @@ make down    # stop stack
 
 Secrets (`JWT_SECRET`, `DEMO_USER_PASSWORD`, optional `GRAFANA_ADMIN_PASSWORD`) come from the host environment or a Compose `.env` file — **never baked into image layers**. Copy `apps/backend/.env.example` values into Compose env as needed.
 
-After `make up`: login in the UI → Filter A/B → **Save results** → open Grafana Explore (Tempo) and filter by attribute `request.id` / correlation header `x-request-id`.
+After `make up`: login in the UI → Filter A/B → **Save results** → open Grafana (http://localhost:3001):
+
+- **Home / BFF at a glance** — big p50 cards, p95 latency chart, traffic bars, latest spans
+- **Dashboards → Local obs → BFF request timings** — per-stage tables (`scrape.live` / `filter.run` / `usageLog.write`)
+- **Explore → Tempo** — one request waterfall via `request.id` / `x-request-id`
 
 **CI does not start Compose or Grafana.** GitHub Actions stays host/PNPM (`pnpm test`, `pnpm lint`, Bruno subset). Host `make dev` / `make test` remain the day-to-day path without Docker.
 
