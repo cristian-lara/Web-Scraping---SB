@@ -1,0 +1,350 @@
+{
+  "uid": "bff-overview",
+  "title": "BFF at a glance",
+  "description": "Friendly overview of backend scrape / filter / persist timings from Tempo",
+  "tags": ["local-obs", "bff", "overview"],
+  "timezone": "browser",
+  "schemaVersion": 39,
+  "version": 1,
+  "refresh": "10s",
+  "time": { "from": "now-1h", "to": "now" },
+  "editable": true,
+  "graphTooltip": 1,
+  "links": [
+    {
+      "title": "Request list (tables)",
+      "type": "link",
+      "icon": "dashboard",
+      "url": "/d/bff-request-timings/bff-request-timings",
+      "targetBlank": false
+    },
+    {
+      "title": "Search one request.id",
+      "type": "link",
+      "icon": "compass",
+      "url": "/explore?schemaVersion=1&panes=%7B%22t%22:%7B%22datasource%22:%22tempo%22,%22queries%22:%5B%7B%22queryType%22:%22traceqlSearch%22,%22refId%22:%22A%22%7D%5D%7D%7D&orgId=1",
+      "targetBlank": true
+    }
+  ],
+  "panels": [
+    {
+      "id": 1,
+      "type": "text",
+      "title": "",
+      "gridPos": { "h": 3, "w": 24, "x": 0, "y": 0 },
+      "transparent": true,
+      "options": {
+        "mode": "markdown",
+        "content": "# Backend health (local)\nGenerate traffic in the UI (**Filter A/B**) or run `pnpm test:e2e:ci`. Numbers below are OpenTelemetry span durations from Tempo — not HTTP status codes."
+      }
+    },
+    {
+      "id": 10,
+      "type": "stat",
+      "title": "HN scrape — typical (p50)",
+      "description": "Median scrape.live duration in the time range",
+      "gridPos": { "h": 5, "w": 8, "x": 0, "y": 3 },
+      "datasource": { "type": "tempo", "uid": "tempo" },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": { "type": "tempo", "uid": "tempo" },
+          "queryType": "traceql",
+          "query": "{ resource.service.name = \"hn-scraper-bff\" && name = \"scrape.live\" } | quantile_over_time(duration, 0.5)",
+          "spss": 10,
+          "limit": 20
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "s",
+          "decimals": 2,
+          "color": { "mode": "thresholds" },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              { "color": "green", "value": null },
+              { "color": "yellow", "value": 0.3 },
+              { "color": "red", "value": 1 }
+            ]
+          },
+          "mappings": []
+        },
+        "overrides": []
+      },
+      "options": {
+        "reduceOptions": { "calcs": ["lastNotNull"], "fields": "", "values": false },
+        "orientation": "auto",
+        "textMode": "value_and_name",
+        "colorMode": "background",
+        "graphMode": "area",
+        "justifyMode": "center"
+      }
+    },
+    {
+      "id": 11,
+      "type": "stat",
+      "title": "Filter — typical (p50)",
+      "description": "Median filter.run duration",
+      "gridPos": { "h": 5, "w": 8, "x": 8, "y": 3 },
+      "datasource": { "type": "tempo", "uid": "tempo" },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": { "type": "tempo", "uid": "tempo" },
+          "queryType": "traceql",
+          "query": "{ resource.service.name = \"hn-scraper-bff\" && name = \"filter.run\" } | quantile_over_time(duration, 0.5)",
+          "spss": 10,
+          "limit": 20
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "s",
+          "decimals": 3,
+          "color": { "mode": "thresholds" },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              { "color": "green", "value": null },
+              { "color": "yellow", "value": 0.05 },
+              { "color": "red", "value": 0.2 }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "reduceOptions": { "calcs": ["lastNotNull"], "fields": "", "values": false },
+        "orientation": "auto",
+        "textMode": "value_and_name",
+        "colorMode": "background",
+        "graphMode": "area",
+        "justifyMode": "center"
+      }
+    },
+    {
+      "id": 12,
+      "type": "stat",
+      "title": "Save to DB — typical (p50)",
+      "description": "Median usageLog.write duration",
+      "gridPos": { "h": 5, "w": 8, "x": 16, "y": 3 },
+      "datasource": { "type": "tempo", "uid": "tempo" },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": { "type": "tempo", "uid": "tempo" },
+          "queryType": "traceql",
+          "query": "{ resource.service.name = \"hn-scraper-bff\" && name = \"usageLog.write\" } | quantile_over_time(duration, 0.5)",
+          "spss": 10,
+          "limit": 20
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "s",
+          "decimals": 3,
+          "color": { "mode": "thresholds" },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              { "color": "green", "value": null },
+              { "color": "yellow", "value": 0.05 },
+              { "color": "red", "value": 0.2 }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "reduceOptions": { "calcs": ["lastNotNull"], "fields": "", "values": false },
+        "orientation": "auto",
+        "textMode": "value_and_name",
+        "colorMode": "background",
+        "graphMode": "area",
+        "justifyMode": "center"
+      }
+    },
+    {
+      "id": 20,
+      "type": "timeseries",
+      "title": "How long each step takes over time (p95)",
+      "description": "p95 duration per span name — spikes usually mean slow HN scrape",
+      "gridPos": { "h": 9, "w": 16, "x": 0, "y": 8 },
+      "datasource": { "type": "tempo", "uid": "tempo" },
+      "targets": [
+        {
+          "refId": "scrape",
+          "datasource": { "type": "tempo", "uid": "tempo" },
+          "queryType": "traceql",
+          "query": "{ resource.service.name = \"hn-scraper-bff\" && name = \"scrape.live\" } | quantile_over_time(duration, 0.95)",
+          "legendFormat": "HN scrape p95",
+          "spss": 10
+        },
+        {
+          "refId": "filter",
+          "datasource": { "type": "tempo", "uid": "tempo" },
+          "queryType": "traceql",
+          "query": "{ resource.service.name = \"hn-scraper-bff\" && name = \"filter.run\" } | quantile_over_time(duration, 0.95)",
+          "legendFormat": "Filter p95",
+          "spss": 10
+        },
+        {
+          "refId": "persist",
+          "datasource": { "type": "tempo", "uid": "tempo" },
+          "queryType": "traceql",
+          "query": "{ resource.service.name = \"hn-scraper-bff\" && name = \"usageLog.write\" } | quantile_over_time(duration, 0.95)",
+          "legendFormat": "DB write p95",
+          "spss": 10
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "s",
+          "custom": {
+            "drawStyle": "line",
+            "lineInterpolation": "smooth",
+            "fillOpacity": 15,
+            "pointSize": 5,
+            "showPoints": "auto",
+            "spanNulls": false
+          },
+          "color": { "mode": "palette-classic" }
+        },
+        "overrides": []
+      },
+      "options": {
+        "legend": { "displayMode": "list", "placement": "bottom", "showLegend": true },
+        "tooltip": { "mode": "multi", "sort": "desc" }
+      }
+    },
+    {
+      "id": 21,
+      "type": "timeseries",
+      "title": "How busy is the backend? (spans / min)",
+      "description": "Rate of completed spans — rises when you click Filter or run Bruno",
+      "gridPos": { "h": 9, "w": 8, "x": 16, "y": 8 },
+      "datasource": { "type": "tempo", "uid": "tempo" },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": { "type": "tempo", "uid": "tempo" },
+          "queryType": "traceql",
+          "query": "{ resource.service.name = \"hn-scraper-bff\" } | rate() by (name)",
+          "spss": 10
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "cps",
+          "custom": {
+            "drawStyle": "bars",
+            "fillOpacity": 40,
+            "stacking": { "mode": "normal", "group": "A" },
+            "showPoints": "never"
+          },
+          "color": { "mode": "palette-classic" }
+        },
+        "overrides": []
+      },
+      "options": {
+        "legend": { "displayMode": "list", "placement": "bottom", "showLegend": true },
+        "tooltip": { "mode": "multi", "sort": "desc" }
+      }
+    },
+    {
+      "id": 30,
+      "type": "bargauge",
+      "title": "Slowest recent steps (max duration)",
+      "description": "Worst-case duration in range — useful to spot outliers",
+      "gridPos": { "h": 7, "w": 12, "x": 0, "y": 17 },
+      "datasource": { "type": "tempo", "uid": "tempo" },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": { "type": "tempo", "uid": "tempo" },
+          "queryType": "traceql",
+          "query": "{ resource.service.name = \"hn-scraper-bff\" } | max_over_time(duration) by (name)",
+          "spss": 10
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "s",
+          "min": 0,
+          "color": { "mode": "thresholds" },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              { "color": "green", "value": null },
+              { "color": "yellow", "value": 0.3 },
+              { "color": "red", "value": 1 }
+            ]
+          },
+          "custom": { "displayMode": "lcd", "valueMode": "color" }
+        },
+        "overrides": []
+      },
+      "options": {
+        "reduceOptions": { "calcs": ["lastNotNull"], "fields": "", "values": false },
+        "orientation": "horizontal",
+        "displayMode": "lcd",
+        "valueMode": "color",
+        "showUnfilled": true,
+        "minVizWidth": 0,
+        "minVizHeight": 16,
+        "namePlacement": "auto"
+      }
+    },
+    {
+      "id": 31,
+      "type": "table",
+      "title": "Latest backend work (click Trace ID)",
+      "description": "Each row is a span. Open it to see request.id and the waterfall.",
+      "gridPos": { "h": 7, "w": 12, "x": 12, "y": 17 },
+      "datasource": { "type": "tempo", "uid": "tempo" },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": { "type": "tempo", "uid": "tempo" },
+          "queryType": "traceql",
+          "limit": 15,
+          "tableType": "traces",
+          "query": "{ resource.service.name = \"hn-scraper-bff\" }"
+        }
+      ],
+      "options": {
+        "showHeader": true,
+        "cellHeight": "sm",
+        "footer": { "show": false }
+      },
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": [
+          {
+            "matcher": { "id": "byName", "options": "Duration" },
+            "properties": [
+              { "id": "unit", "value": "ms" },
+              {
+                "id": "custom.cellOptions",
+                "value": { "type": "color-background", "mode": "basic" }
+              },
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    { "color": "green", "value": null },
+                    { "color": "yellow", "value": 300 },
+                    { "color": "red", "value": 1000 }
+                  ]
+                }
+              },
+              { "id": "color", "value": { "mode": "thresholds" } }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}
