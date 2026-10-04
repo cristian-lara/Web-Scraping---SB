@@ -1,7 +1,10 @@
 # Build from repository root: docker build -f apps/backend/Dockerfile .
 FROM node:22-bookworm-slim AS deps
 WORKDIR /app
-RUN corepack enable
+RUN apt-get update \
+  && apt-get install -y --no-install-recommends openssl ca-certificates \
+  && rm -rf /var/lib/apt/lists/* \
+  && corepack enable
 COPY package.json pnpm-lock.yaml pnpm-workspace.yaml turbo.json ./
 COPY apps/backend/package.json apps/backend/
 COPY apps/frontend/package.json apps/frontend/
@@ -17,10 +20,10 @@ RUN pnpm --filter @repo/shared-types build \
 FROM node:22-bookworm-slim AS runner
 WORKDIR /app
 ENV NODE_ENV=production
-RUN corepack enable \
-  && apt-get update \
+RUN apt-get update \
   && apt-get install -y --no-install-recommends openssl ca-certificates \
-  && rm -rf /var/lib/apt/lists/*
+  && rm -rf /var/lib/apt/lists/* \
+  && corepack enable
 COPY --from=build /app /app
 WORKDIR /app/apps/backend
 EXPOSE 3000
