@@ -5,6 +5,7 @@ import { fileURLToPath } from "node:url";
 import type { INestApplication } from "@nestjs/common";
 import { Test } from "@nestjs/testing";
 import {
+  FILTER_LESS_OR_EQUAL_5_WORDS_POINTS,
   FILTER_MORE_THAN_5_WORDS_COMMENTS,
   FILTER_WORD_THRESHOLD,
   countWords,
@@ -36,7 +37,10 @@ const TEST_DEMO_USER_PASSWORD = "demo-password-change-me";
 const FILTERS_PATH = `/${FILTERS_ROUTE_PREFIX}`;
 const OPENAPI_JSON_PATH = `/${SWAGGER_PATH}-json`;
 
-/** Mixed titles so Filter A keeps > FILTER_WORD_THRESHOLD (offline, no HN). */
+/**
+ * Mixed titles so Filter A keeps > FILTER_WORD_THRESHOLD and Filter B keeps
+ * <= threshold (offline, no HN). Ranks 2 and 4 share points for Filter B tie-break.
+ */
 const MOCK_SCRAPE_ENTRIES: Entry[] = [
   {
     rank: 1,
@@ -55,6 +59,12 @@ const MOCK_SCRAPE_ENTRIES: Entry[] = [
     title: "alpha beta gamma delta epsilon zeta",
     points: 50,
     comments: 40,
+  },
+  {
+    rank: 4,
+    title: "brief",
+    points: 100,
+    comments: 1,
   },
 ];
 
@@ -147,6 +157,35 @@ describe("Filter HTTP (fixture scraper, offline)", () => {
     );
     expect(usage).toBeTruthy();
     expect(usage?.filter_applied).toBe(FILTER_MORE_THAN_5_WORDS_COMMENTS);
+    expect(usage?.userId).toBe(DEFAULT_DEMO_USER_ID);
+    expect(usage?.processed_items).toBe(MOCK_SCRAPE_ENTRIES.length);
+    expect(usage?.timestamp).toMatch(/^\d{4}-\d{2}-\d{2}T/);
+  });
+
+  it("happy path: JWT + Filter B returns filtered mock-scraper entries", async () => {
+    const token = await loginToken(app);
+
+    const res = await request(app.getHttpServer())
+      .get(FILTERS_PATH)
+      .query({ filter: FILTER_LESS_OR_EQUAL_5_WORDS_POINTS })
+      .set("Authorization", `Bearer ${token}`)
+      .expect(HTTP_STATUS_OK);
+
+    const entries = res.body as Entry[];
+    expect(Array.isArray(entries)).toBe(true);
+    expect(entries.length).toBeGreaterThan(0);
+    expect(entries.map((e) => e.rank)).toEqual([2, 4]);
+    for (const entry of entries) {
+      expect(countWords(entry.title)).toBeLessThanOrEqual(FILTER_WORD_THRESHOLD);
+    }
+    expect(entries[0].points).toBe(entries[1].points);
+    expect(entries[0].rank).toBeLessThan(entries[1].rank);
+
+    const usage = await app.get(PrismaUsageRepository).findLatestByUserId(
+      DEFAULT_DEMO_USER_ID,
+    );
+    expect(usage).toBeTruthy();
+    expect(usage?.filter_applied).toBe(FILTER_LESS_OR_EQUAL_5_WORDS_POINTS);
     expect(usage?.userId).toBe(DEFAULT_DEMO_USER_ID);
     expect(usage?.processed_items).toBe(MOCK_SCRAPE_ENTRIES.length);
     expect(usage?.timestamp).toMatch(/^\d{4}-\d{2}-\d{2}T/);

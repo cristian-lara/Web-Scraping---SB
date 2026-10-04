@@ -8,6 +8,7 @@
     "prisma:migrate": "prisma migrate deploy",
     "build": "prisma generate && tsc -p tsconfig.json",
     "test": "prisma generate && vitest run",
+    "test:coverage": "prisma generate && vitest run --coverage",
     "lint": "eslint src --ext .ts",
     "dev": "prisma generate && tsx src/main.ts",
     "start": "tsx src/main.ts"
@@ -41,6 +42,7 @@
     "@types/express": "^5.0.6",
     "@types/passport-jwt": "^4.0.1",
     "@types/supertest": "^7.2.1",
+    "@vitest/coverage-v8": "^3.2.4",
     "prisma": "6.19.0",
     "supertest": "^7.3.0",
     "tsx": "^4.23.15",

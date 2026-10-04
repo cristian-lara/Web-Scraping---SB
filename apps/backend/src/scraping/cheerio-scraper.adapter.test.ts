@@ -61,6 +61,30 @@ describe("CheerioScraperAdapter", () => {
     expect(first.comments).toBe(2);
   });
 
+  it("returns ranks exactly 1..HN_TOP_ENTRY_LIMIT in order", () => {
+    const html = readFileSync(FIXTURE_PATH, "utf8");
+    const entries = new CheerioScraperAdapter().scrapeFromHtml(html);
+    const expectedRanks = Array.from(
+      { length: HN_TOP_ENTRY_LIMIT },
+      (_, index) => index + 1,
+    );
+
+    expect(entries.map((entry) => entry.rank)).toEqual(expectedRanks);
+  });
+
+  it("excludes surplus fixture rows beyond the top-30 slice", () => {
+    const html = readFileSync(FIXTURE_PATH, "utf8");
+    expect(html).toContain("Sample story 31");
+    expect(html).toContain("Sample story 32");
+
+    const entries = new CheerioScraperAdapter().scrapeFromHtml(html);
+    const titles = entries.map((entry) => entry.title);
+
+    expect(titles).not.toContain("Sample story 31");
+    expect(titles).not.toContain("Sample story 32");
+    expect(titles).toContain("Sample story 30");
+  });
+
   it("skips rows with invalid rank or empty title", () => {
     const html = `
       <table>
