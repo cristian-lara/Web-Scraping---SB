@@ -52,7 +52,7 @@ Slice gates: **5.5** (review) and **5.6** (audit PASS) before mono close. Tag is
 - [x] 5.4 Confirm no committed secrets in env examples — verify: grep of `.env.example` files shows placeholders only
 - [x] 5.5 **Slice review:** HP-DOCS, HP-MAKE, HP-BUILD; `openspec validate add-mvp-ops-release --strict` exit 0
 - [x] 5.6 **Slice audit:** table 5.1–5.5 → PASS before close — verify: `SLICE-AUDIT.md` evidence
-- [ ] 5.7 After F3-1…F3-3 green and change is on `main`, create annotated git tag `v1.0.0-mvp` — verify: `git tag -l v1.0.0-mvp` (HP-TAG). Until `main` merge, README names the tag only
+- [x] 5.7 After F3-1…F3-3 green and change is on `main`, create annotated git tag `v1.0.0-mvp` — verify: `git tag -l v1.0.0-mvp` (HP-TAG). Until `main` merge, README names the tag only
 
 ## 6. Mono close
 

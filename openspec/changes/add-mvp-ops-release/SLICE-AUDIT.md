@@ -47,7 +47,7 @@
 | 5.1–5.4 | PASS | root `README.md`, `Makefile` targets, `pnpm build` exit 0 (wave-4/5 agent) |
 | 5.5 | PASS | validate `--strict` exit 0 |
 | 5.6 | PASS | this table |
-| 5.7 | OPEN | tag `v1.0.0-mvp` after merge to `main` |
+| 5.7 | PASS | annotated tag `v1.0.0-mvp` on `main` @ `abe9868`; pushed to origin |
 
 **Verdict:** PASS (tag deferred by design)
 
@@ -71,4 +71,4 @@
 | HP-CI / EC-CI-NOSENTRY / EC-CI-LOGS / EC-CI-FAIL | `ci.yml` + README CI |
 | HP-BR-CORR / HP-BR1–3 / EC-BR1–3 | Bruno collection |
 | HP-DOCS / HP-MAKE / HP-BUILD | README + Makefile + `pnpm build` |
-| HP-TAG | README names tag; git tag after `main` |
+| HP-TAG | annotated `v1.0.0-mvp` on `main` @ `abe9868` (pushed) |
