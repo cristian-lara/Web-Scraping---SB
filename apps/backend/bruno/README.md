@@ -14,6 +14,21 @@ pnpm --filter @repo/backend dev
 
 BFF: `http://localhost:3000`. Demo user: `DEMO_USER_EMAIL` / `DEMO_USER_PASSWORD` from `.env.example` (same values as Bruno env `local`).
 
+## Fixture scrape (CI / non-vacuous HP2–HP3)
+
+HP2 and HP3 **require a non-empty** filtered array (empty `[]` fails those happy paths). CI sets `E2E_SCRAPE_FIXTURE=1` on the Nest process so scrape uses offline `hn_sample.html` (mixed long/short titles) instead of live Hacker News.
+
+Local equivalent:
+
+```bash
+# In apps/backend/.env (or export):
+E2E_SCRAPE_FIXTURE=1
+pnpm --filter @repo/backend dev
+# then: pnpm test:e2e:ci
+```
+
+Unset / omit the flag for live HN (local demo). Live HN may return empty Filter A or B depending on titles — that is valid API EC-EMPTY but not Bruno happy-path evidence.
+
 ## Run Bruno
 
 GUI: open `apps/backend/bruno/` in Bruno, select environment `local`, run HP1 before HP2/HP3/E2. Run E3 last.
