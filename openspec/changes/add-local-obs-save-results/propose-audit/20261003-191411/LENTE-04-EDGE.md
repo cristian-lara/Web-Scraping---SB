@@ -1,0 +1,6 @@
+# Lente EDGE
+
+- cite: design EC table; INSPECTION 184214 § B
+- EC-SAVE-401/400, OTEL-OFF, CI-NOCOMPOSE, EMPTY-SAVES, USAGE-NO-ENTRIES → PASS
+- veredicto_lente: PASS
+)

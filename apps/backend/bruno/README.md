@@ -16,16 +16,18 @@ BFF: `http://localhost:3000`. Demo user: `DEMO_USER_EMAIL` / `DEMO_USER_PASSWORD
 
 ## Run Bruno
 
-GUI: open `apps/backend/bruno/` in Bruno, select environment `local`, run HP1 before HP2/HP3/E2. Run E3 last.
+GUI: open `apps/backend/bruno/` in Bruno, select environment `local`, run HP1 before HP2–HP5/E2. Run E3 last.
 
 CLI:
 
 ```bash
 # From repo root (cwd must be collection root with bruno.json):
 pnpm test:e2e          # full collection including E3 throttle
-pnpm test:e2e:ci       # CI subset: HP1–3 + E1–E2 (skip E3; 429 is Vitest)
+pnpm test:e2e:ci       # CI subset: HP1–5 + E1–E2 + E4 (skip E3; 429 is Vitest)
 # Or: make test-e2e
 ```
+
+HP4/HP5 save+list use fixture entries in the request body (no live HN required). E4 asserts 401 on save without Bearer.
 
 ## Environment `local`
 

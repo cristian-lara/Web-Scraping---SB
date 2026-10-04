@@ -28,6 +28,8 @@ export class PrismaUsageRepository {
         processed_items: parsed.processed_items,
         execution_time_ms: parsed.execution_time_ms,
         userId: parsed.userId,
+        requestId: parsed.requestId,
+        scrape_duration_ms: parsed.scrape_duration_ms,
       },
     });
 
@@ -60,6 +62,8 @@ export class PrismaUsageRepository {
     processed_items: number;
     execution_time_ms: number;
     userId: string;
+    requestId: string;
+    scrape_duration_ms: number;
   }): UsageLog {
     return UsageLogSchema.parse({
       id: row.id,
@@ -68,6 +72,8 @@ export class PrismaUsageRepository {
       processed_items: row.processed_items,
       execution_time_ms: row.execution_time_ms,
       userId: row.userId,
+      requestId: row.requestId,
+      scrape_duration_ms: row.scrape_duration_ms,
     });
   }
 }

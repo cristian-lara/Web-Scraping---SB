@@ -5,6 +5,7 @@ import { AppModule } from "./app.module.js";
 import { bootstrapDemoUser } from "./auth/demo-user.store.js";
 import { correlationMiddleware } from "./common/correlation.middleware.js";
 import { HttpExceptionMappingFilter } from "./common/http-exception-mapping.filter.js";
+import { initOtelIfConfigured } from "./common/otel-bootstrap.js";
 import { initSentryIfConfigured } from "./common/sentry-client.js";
 import { setupSwagger } from "./common/swagger.setup.js";
 
@@ -25,6 +26,7 @@ export function configureApp(app: INestApplication): void {
 }
 
 export async function createApp(): Promise<INestApplication> {
+  initOtelIfConfigured();
   initSentryIfConfigured();
   await bootstrapDemoUser();
 
