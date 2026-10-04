@@ -146,6 +146,8 @@ C4 Context / Containers / Components (sources + regenerate notes: [`docs/archite
 
 Flow: `feature/*` → PR → `develop` → (release) PR → `main`. Local gestor notes under `projects/**/_local/` are gitignored.
 
+License: [`LICENSE`](LICENSE) (MIT). Release history: [`CHANGELOG.md`](CHANGELOG.md). Snapshot tag name: `v1.0.0-mvp` (created on `main` after the release merge).
+
 ## Env examples
 
 | File | Notes |
