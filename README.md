@@ -84,16 +84,34 @@ make test
 
 Workspace unit/integration tests (Turbo). Backend suites stay offline (fixture HTML / mocked scrape). No live `news.ycombinator.com` in Vitest.
 
+## Evaluator evidence (scenario matrix + CORE coverage)
+
+**Scenario matrix (what is tested):** [`docs/qa/core-scenario-matrix.md`](docs/qa/core-scenario-matrix.md) — CORE happy/edge paths mapped to Vitest/Bruno with `PASS` / `WEAK` / `GAP`.
+
+**Code coverage (CORE modules only):** `countWords` / schemas, backend `scraping/**` + `filtering/**`. Not a whole-repo 100% gate.
+
+```bash
+make test-coverage
+# equivalent: pnpm test:coverage
+```
+
+Open HTML reports:
+
+- `packages/shared-types/coverage/index.html`
+- `apps/backend/coverage/index.html`
+
+LCOV: `coverage/lcov.info` under each of those dirs. `coverage/` is gitignored. CI uploads both as the `core-coverage` artifact; under-threshold CORE coverage fails the job.
+
 ## Bruno E2E
 
-Backend must already be listening on `http://localhost:3000`.
+Backend must already be listening on `http://localhost:3000`. For non-vacuous HP2/HP3 in CI/local, set `E2E_SCRAPE_FIXTURE=1` on Nest (see `apps/backend/bruno/README.md`).
 
 ```bash
 make test-e2e
 # equivalent: pnpm test:e2e  (runs bru from apps/backend/bruno)
 ```
 
-Collection: `apps/backend/bruno/` (plain-text `.bru`, env `local`). HP1 login, HP2/HP3 filters (assert non-empty `x-request-id`), E1–E3 (401/400/429). See `apps/backend/bruno/README.md`.
+Collection: `apps/backend/bruno/` (plain-text `.bru`, env `local`). HP1 login, HP2/HP3 filters (non-empty array + contracts + `x-request-id`), E1–E3 (401/400/429). See `apps/backend/bruno/README.md`.
 
 ## Lint
 
@@ -106,9 +124,9 @@ make lint
 
 GitHub Actions: `.github/workflows/ci.yml` on `pull_request` and `push` to `develop` and `main`.
 
-Order: `pnpm install --frozen-lockfile` → `pnpm test` → `pnpm lint` → live backend (`pnpm --filter @repo/backend start`) → `pnpm test:e2e:ci` (Bruno HP1–3 + E1–E2; live scrape). E3 throttle is local/`pnpm test:e2e`; EC-429 also covered by Vitest.
+Order: `pnpm install --frozen-lockfile` → `pnpm test` → `pnpm test:coverage` (CORE thresholds + `core-coverage` artifact) → `pnpm lint` → backend with `E2E_SCRAPE_FIXTURE=1` → `pnpm test:e2e:ci` (Bruno HP1–3 + E1–E2). E3 throttle is local/`pnpm test:e2e`; EC-429 also covered by Vitest.
 
-**A failing Vitest or Bruno run fails CI** (non-zero exit fails the job). Lint non-zero also fails the job. `SENTRY_DSN` is empty in CI (Sentry not required). `JWT_SECRET` and `DEMO_USER_PASSWORD` are step `env` values and must not be echoed in workflow logs.
+**A failing Vitest, CORE coverage, or Bruno run fails CI** (non-zero exit fails the job). Lint non-zero also fails the job. `SENTRY_DSN` is empty in CI (Sentry not required). `JWT_SECRET` and `DEMO_USER_PASSWORD` are step `env` values and must not be echoed in workflow logs.
 
 ## Build
 

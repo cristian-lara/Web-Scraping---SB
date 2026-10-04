@@ -33,5 +33,19 @@ export default defineConfig({
     setupFiles: ["src/test/setup-env.ts"],
     // Nest HTTP tests share one app; avoid cross-file throttle races.
     fileParallelism: false,
+    coverage: {
+      provider: "v8",
+      reportsDirectory: "./coverage",
+      reporter: ["text", "html", "lcov"],
+      include: ["src/scraping/**/*.ts", "src/filtering/**/*.ts"],
+      exclude: ["src/**/*.test.ts", "src/**/*.http.test.ts"],
+      // CORE floors from baseline (~98% stmts); fail under these (not whole-repo).
+      thresholds: {
+        lines: 90,
+        functions: 85,
+        branches: 85,
+        statements: 90,
+      },
+    },
   },
 });
