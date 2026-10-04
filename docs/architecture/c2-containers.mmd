@@ -1,0 +1,31 @@
+%% C4 Containers — matches docker-compose.yml local stack
+C4Container
+  title Container diagram — HN Scraper MVP (local Compose)
+
+  Person(evaluator, "Evaluator", "Browser / API client")
+
+  System_Boundary(mvp, "HN Scraper MVP") {
+    Container(fe, "React SPA", "Vite / nginx :5173", "Login, Filters A/B, Save results")
+    Container(bff, "Nest BFF", "NestJS :3000", "Auth, scrape, filters, analytics, OTel spans")
+    ContainerDb(sqlite, "SQLite", "Prisma app.db", "UsageLog + SavedFilterResult")
+  }
+
+  System_Boundary(obs, "Local observability (Compose)") {
+    Container(otel, "OTel Collector", ":4317/:4318", "Receives OTLP; routes to Tempo/Loki")
+    Container(tempo, "Tempo", ":3200", "Trace store")
+    Container(loki, "Loki", ":3100", "Log store")
+    Container(grafana, "Grafana", ":3001", "Home BFF at a glance; Local obs dashboards; Explore")
+  }
+
+  System_Ext(hn, "Hacker News", "HTML listing")
+
+  Rel(evaluator, fe, "HTTPS/HTTP")
+  Rel(fe, bff, "JWT + /auth /filters HTTP")
+  Rel(bff, sqlite, "Prisma read/write")
+  Rel(bff, hn, "Polite HTML fetch")
+  Rel(bff, otel, "OTLP HTTP traces")
+  Rel(otel, tempo, "Export traces")
+  Rel(otel, loki, "Export logs (if configured)")
+  Rel(grafana, tempo, "Tempo datasource queries")
+  Rel(grafana, loki, "Loki datasource queries")
+  Rel(evaluator, grafana, "Dashboards / Explore")

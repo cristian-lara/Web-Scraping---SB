@@ -1,0 +1,28 @@
+%% C4 Components — BFF modules + FE pages (no Code level)
+%% OTel bootstrap (optional OTLP): spans scrape.live, filter.run, usageLog.write;
+%% attrs request.id, hn.fetch.outcome (cache|live|retry), hn.fetch.wait_ms
+C4Component
+  title Component diagram — BFF modules and SPA pages
+
+  Container_Boundary(fe, "React SPA") {
+    Component(login, "LoginPage", "React", "POST /auth/login; stores JWT")
+    Component(filters, "FiltersPage", "React", "Filter A/B, Save results, list saved")
+  }
+
+  Container_Boundary(bff, "Nest BFF") {
+    Component(auth, "AuthModule", "Nest", "JWT login; demo user from env")
+    Component(filter, "FilterModule", "Nest", "Filter A/B; span filter.run")
+    Component(scrape, "ScrapingModule", "Nest", "Polite HN fetch; span scrape.live")
+    Component(analytics, "AnalyticsModule", "Nest", "UsageLog + SavedFilterResult; span usageLog.write")
+  }
+
+  ContainerDb(sqlite, "SQLite", "Prisma", "UsageLog.requestId; SavedFilterResult")
+
+  System_Ext(hn, "Hacker News", "HTML")
+
+  Rel(login, auth, "POST /auth/login")
+  Rel(filters, filter, "GET /filters + save/list")
+  Rel(filter, scrape, "Needs live/fixture entries")
+  Rel(filter, analytics, "After filter / on save")
+  Rel(scrape, hn, "Polite HTML fetch")
+  Rel(analytics, sqlite, "Persist UsageLog + SavedFilterResult")

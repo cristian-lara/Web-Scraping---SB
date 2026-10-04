@@ -1,0 +1,17 @@
+%% C4 Context — HN Scraper MVP
+C4Context
+  title System Context — HN Scraper MVP
+
+  Person(evaluator, "Evaluator", "Runs the MVP locally (host or Docker) to exercise filters and Save results")
+
+  System(mvp, "HN Scraper MVP", "NestJS BFF + React SPA + SQLite; scrapes HN HTML, applies Filter A/B, persists UsageLog and SavedFilterResult")
+
+  System_Ext(hn, "Hacker News", "news.ycombinator.com HTML listing")
+  System_Ext(sentry, "Sentry (optional)", "Error reporting when SENTRY_DSN / VITE_SENTRY_DSN are set")
+  System_Ext(grafanaStack, "Local Grafana stack", "OTel Collector, Tempo, Loki, Grafana (Compose make up)")
+
+  Rel(evaluator, mvp, "Uses UI / API (JWT)")
+  Rel(mvp, hn, "Fetches HTML (polite scrape)")
+  Rel(mvp, sentry, "Reports errors when DSN set")
+  Rel(mvp, grafanaStack, "Exports OTLP traces when OTEL_EXPORTER_OTLP_ENDPOINT set")
+  Rel(evaluator, grafanaStack, "Reads dashboards / Explore after make up")
